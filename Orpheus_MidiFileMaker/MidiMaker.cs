@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Orpheus_MidiFileMaker
 {
-    public class Program
+    public class MidiMaker
     {
         static void Main(string[] args)
         {
