@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orpheus", "Orpheus\Orpheus.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orpheus_Analyser", "Orpheus_Analyser\Orpheus_Analyser.csproj", "{0D0AB867-A627-4063-AC35-21AE6F1694F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orpheus_MidiFileMaker", "Orpheus_MidiFileMaker\Orpheus_MidiFileMaker.csproj", "{F5220D90-1FA8-456B-8B58-6CC14E5B9630}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0D0AB867-A627-4063-AC35-21AE6F1694F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D0AB867-A627-4063-AC35-21AE6F1694F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D0AB867-A627-4063-AC35-21AE6F1694F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5220D90-1FA8-456B-8B58-6CC14E5B9630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5220D90-1FA8-456B-8B58-6CC14E5B9630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5220D90-1FA8-456B-8B58-6CC14E5B9630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5220D90-1FA8-456B-8B58-6CC14E5B9630}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
