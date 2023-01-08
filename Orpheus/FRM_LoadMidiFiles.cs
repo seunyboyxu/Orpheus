@@ -17,5 +17,19 @@ namespace Orpheus
             InitializeComponent();
         }
 
+        private void BTN_Cancel_Click(object sender, EventArgs e)
+        {
+            FRM_MainPage mainPage = new FRM_MainPage();
+            mainPage.ShowDialog();
+            this.Close();
+        }
+
+        private void BTN_Run_Click(object sender, EventArgs e)
+        {
+            Orpheus_Analyser.MidiAnalyser.LoadMidiFiles();
+            FRM_MainPage mainPage = new FRM_MainPage();
+            mainPage.ShowDialog();
+            this.Close();
+        }
     }
 }

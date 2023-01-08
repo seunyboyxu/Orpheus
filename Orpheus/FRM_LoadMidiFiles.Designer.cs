@@ -63,6 +63,7 @@
             this.BTN_Run.TabIndex = 2;
             this.BTN_Run.Text = "Run";
             this.BTN_Run.UseVisualStyleBackColor = true;
+            this.BTN_Run.Click += new System.EventHandler(this.BTN_Run_Click);
             // 
             // BTN_Cancel
             // 
@@ -74,6 +75,7 @@
             this.BTN_Cancel.TabIndex = 3;
             this.BTN_Cancel.Text = "Cancel";
             this.BTN_Cancel.UseVisualStyleBackColor = true;
+            this.BTN_Cancel.Click += new System.EventHandler(this.BTN_Cancel_Click);
             // 
             // FRM_LoadMidiFiles
             // 

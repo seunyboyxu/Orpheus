@@ -44,7 +44,7 @@
             this.TXT_Randomness = new System.Windows.Forms.NumericUpDown();
             this.BTN_Title = new System.Windows.Forms.Button();
             this.BTN_Settings = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.BTN_LoadMidiFiles = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PCBX_PatternSeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PCBX_ExcludedNotes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PCBX_Randomness)).BeginInit();
@@ -288,19 +288,19 @@
             this.BTN_Settings.UseVisualStyleBackColor = false;
             this.BTN_Settings.Click += new System.EventHandler(this.BTN_Settings_Click_1);
             // 
-            // button2
+            // BTN_LoadMidiFiles
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = global::Orpheus.Properties.Resources.LoadMidiFiles_Title;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(1018, 9);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(322, 114);
-            this.button2.TabIndex = 16;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.BTN_LoadMidiFiles.BackColor = System.Drawing.Color.Transparent;
+            this.BTN_LoadMidiFiles.BackgroundImage = global::Orpheus.Properties.Resources.LoadMidiFiles_Title;
+            this.BTN_LoadMidiFiles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BTN_LoadMidiFiles.FlatAppearance.BorderSize = 0;
+            this.BTN_LoadMidiFiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_LoadMidiFiles.Location = new System.Drawing.Point(1018, 9);
+            this.BTN_LoadMidiFiles.Name = "BTN_LoadMidiFiles";
+            this.BTN_LoadMidiFiles.Size = new System.Drawing.Size(322, 114);
+            this.BTN_LoadMidiFiles.TabIndex = 16;
+            this.BTN_LoadMidiFiles.UseVisualStyleBackColor = false;
+            this.BTN_LoadMidiFiles.Click += new System.EventHandler(this.BTN_LoadMidiFiles_Click);
             // 
             // FRM_MainPage
             // 
@@ -309,7 +309,7 @@
             this.BackgroundImage = global::Orpheus.Properties.Resources.Orpheus_MainBCKGRND1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.BTN_LoadMidiFiles);
             this.Controls.Add(this.BTN_Settings);
             this.Controls.Add(this.BTN_Title);
             this.Controls.Add(this.TXT_Randomness);
@@ -360,7 +360,7 @@
         private System.Windows.Forms.NumericUpDown TXT_Randomness;
         private System.Windows.Forms.Button BTN_Title;
         private System.Windows.Forms.Button BTN_Settings;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button BTN_LoadMidiFiles;
     }
 }
 

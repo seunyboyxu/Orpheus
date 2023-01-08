@@ -70,9 +70,12 @@ namespace Orpheus
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void BTN_LoadMidiFiles_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();
+            FRM_LoadMidiFiles MidiFileLoader = new FRM_LoadMidiFiles();
+            MidiFileLoader.ShowDialog();
+            this.Close();
         }
     }
 
