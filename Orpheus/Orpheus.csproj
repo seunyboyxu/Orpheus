@@ -73,6 +73,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FRM_LoadMidiFiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_LoadMidiFiles.Designer.cs">
+      <DependentUpon>FRM_LoadMidiFiles.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRM_MainPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FRM_LoadMidiFiles.resx">
+      <DependentUpon>FRM_LoadMidiFiles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FRM_MainPage.resx">
       <DependentUpon>FRM_MainPage.cs</DependentUpon>
     </EmbeddedResource>
