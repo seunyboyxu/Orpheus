@@ -54,7 +54,8 @@
             this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.BackgroundImage = global::Orpheus.Properties.Resources.settings_title;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.button1.FlatAppearance.BorderSize = 5;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(499, 9);
             this.button1.Name = "button1";

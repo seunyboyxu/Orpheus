@@ -19,7 +19,7 @@ namespace Orpheus
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FRM_MainPage());
-            Orpheus_Analyser.MidiAnalyser.LoadMidiFiles();
+            //Orpheus_Analyser.MidiAnalyser.LoadMidiFiles();
         }
 
 

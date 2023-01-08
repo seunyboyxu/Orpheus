@@ -262,7 +262,8 @@
             this.BTN_Title.BackgroundImage = global::Orpheus.Properties.Resources.OrpheusLogo;
             this.BTN_Title.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BTN_Title.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BTN_Title.FlatAppearance.BorderSize = 0;
+            this.BTN_Title.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BTN_Title.FlatAppearance.BorderSize = 5;
             this.BTN_Title.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BTN_Title.ForeColor = System.Drawing.Color.Transparent;
             this.BTN_Title.Location = new System.Drawing.Point(9, 9);
@@ -280,7 +281,7 @@
             this.BTN_Settings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BTN_Settings.FlatAppearance.BorderSize = 0;
             this.BTN_Settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTN_Settings.Location = new System.Drawing.Point(499, 9);
+            this.BTN_Settings.Location = new System.Drawing.Point(512, 9);
             this.BTN_Settings.Name = "BTN_Settings";
             this.BTN_Settings.Size = new System.Drawing.Size(500, 117);
             this.BTN_Settings.TabIndex = 15;
@@ -294,7 +295,7 @@
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(1005, 9);
+            this.button2.Location = new System.Drawing.Point(1018, 9);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(322, 114);
             this.button2.TabIndex = 16;
