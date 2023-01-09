@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Orpheus_Analyser;
+using Orpheus_MidiFileMaker;
 
 
 namespace Orpheus
@@ -19,7 +20,6 @@ namespace Orpheus
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FRM_MainPage());
-            //Orpheus_Analyser.MidiAnalyser.LoadMidiFiles();
         }
 
 

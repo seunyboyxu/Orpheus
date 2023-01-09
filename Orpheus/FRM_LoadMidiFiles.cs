@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Orpheus_Analyser;
 
 namespace Orpheus
 {
@@ -26,7 +27,7 @@ namespace Orpheus
 
         private void BTN_Run_Click(object sender, EventArgs e)
         {
-            Orpheus_Analyser.MidiAnalyser.LoadMidiFiles();
+            MidiAnalyser.LoadMidiFiles();
             FRM_MainPage mainPage = new FRM_MainPage();
             mainPage.ShowDialog();
             this.Close();
