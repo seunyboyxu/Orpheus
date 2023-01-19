@@ -32,6 +32,7 @@ namespace Orpheus_Analyser
     {
         public static void Main(string[] args)
         {
+            LoadMidiFiles();
         }
 
         public static void LoadMidiFiles()
@@ -56,12 +57,13 @@ namespace Orpheus_Analyser
                     {
                         TheMidiFile tempMidiFile = new TheMidiFile(file);
 
-                        tempMidiFile.BPM = Analysis.GetBPM(tempMidiFile.GetMidiFile());
-                        tempMidiFile.TimeSigniture = Analysis.GetTimeSig(tempMidiFile.GetMidiFile());
-                        tempMidiFile.THETop10Notes = Analysis.GetTop10Notes(tempMidiFile.GetMidiFile());
-                        tempMidiFile.AllTHEnotesUsed = Analysis.AllUsedNotes(tempMidiFile.GetMidiFile());
-                        tempMidiFile.THEpatterns = Analysis.PredictNoteDurations(tempMidiFile.GetMidiFile());
-
+                        tempMidiFile.SetBPM(Analysis.GetBPM(tempMidiFile.GetMidiFile()));
+                        tempMidiFile.SetTimeSig(Analysis.GetTimeSig(tempMidiFile.GetMidiFile()));
+                        tempMidiFile.SetTop10Notes(Analysis.GetTop10Notes(tempMidiFile.GetMidiFile()));
+                        tempMidiFile.SetAllNotesUsed(Analysis.AllUsedNotes(tempMidiFile.GetMidiFile()));
+                        tempMidiFile.SetPatterns(Analysis.PredictNoteDurations(tempMidiFile.GetMidiFile()));
+                        
+                        
                         AllMidiFiles.Add(tempMidiFile);
                     }
                     catch (Exception ex)
@@ -78,13 +80,13 @@ namespace Orpheus_Analyser
 
     public class TheMidiFile
     {
-        private string filename { get; set; }
+        private string filename;
         private MidiFile midiFile;
         private string location;
         private double bpm;
         private string TimeSig;
         private List<string> Top10Notes;
-        private List<string> ALlNotesUsed;
+        private List<string> AllNotesUsed;
         private List<List<double>> patterns;
 
         public TheMidiFile(string locationInput)
@@ -94,35 +96,25 @@ namespace Orpheus_Analyser
             GetFileName();
         }
 
-        public double BPM
-        {
-            get { return bpm; }
-            set { bpm = value; }
-        }
+        
+        public void SetBPM(double x) { bpm = x;  }
+        public double GetBPM() { return bpm; }
 
-        public string TimeSigniture
-        {
-            get { return TimeSig; }
-            set { TimeSig = value; }
-        }
+        
+        public void SetTimeSig(string x) { TimeSig = x; }
+        public string GetTimeSig() { return TimeSig; }
 
-        public List<string> THETop10Notes
-        {
-            get { return Top10Notes; }
-            set { Top10Notes = value; }
-        }
+        
+        public void SetTop10Notes(List<string> x) { Top10Notes = x; }
+        public List<string> GetTop10Notes() { return Top10Notes; }
 
-        public List<string> AllTHEnotesUsed
-        {
-            get { return ALlNotesUsed; }
-            set { ALlNotesUsed = value; }
-        }
+        
+        public void SetAllNotesUsed(List<string> x) { AllNotesUsed = x; }
+        public List<string> GetAllNotesUsed() { return AllNotesUsed; }
 
-        public List<List<double>> THEpatterns
-        {
-            get { return patterns; }
-            set { patterns = value; }
-        }
+        
+        public void SetPatterns(List<List<double>> x) { patterns = x; }
+        public List<List<double>> GetPatterns() { return patterns; }
 
         public void GetFileName()
         {
