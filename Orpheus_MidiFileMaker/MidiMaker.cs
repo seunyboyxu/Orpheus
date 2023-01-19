@@ -11,6 +11,12 @@ namespace Orpheus_MidiFileMaker
         static void Main(string[] args)
         {
         }
+
+        public static void Generate(InputData UserData) 
+        {
+            
+        }
+
     }
 
     public class InputData
