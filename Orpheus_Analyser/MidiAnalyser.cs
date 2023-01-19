@@ -24,7 +24,9 @@ using System.Numerics;
 using MathNet.Numerics.LinearAlgebra;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
-using Newtonsoft.Json;
+
+//JSON stuff
+using System.Text.Json;
 
 namespace Orpheus_Analyser
 {
@@ -37,6 +39,7 @@ namespace Orpheus_Analyser
 
         public static void LoadMidiFiles()
         {
+
             List<TheMidiFile> AllMidiFiles = new List<TheMidiFile>();
             string path = "/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/midi file list";
             int count = 0;
@@ -44,7 +47,7 @@ namespace Orpheus_Analyser
             {
                 if (count == 100)
                 {
-                    string json = JsonConvert.SerializeObject(AllMidiFiles);
+                    string json = JsonSerializer.Serialize(AllMidiFiles);
                     System.IO.File.AppendAllText("midiData.json", json);
                     AllMidiFiles.Clear();
                     count = 0;
@@ -80,14 +83,14 @@ namespace Orpheus_Analyser
 
     public class TheMidiFile
     {
-        private string filename;
-        private MidiFile midiFile;
-        private string location;
-        private double bpm;
-        private string TimeSig;
-        private List<string> Top10Notes;
-        private List<string> AllNotesUsed;
-        private List<List<double>> patterns;
+        public string filename;
+        public MidiFile midiFile;
+        public string location;
+        public double bpm;
+        public string TimeSig;
+        public List<string> Top10Notes;
+        public List<string> AllNotesUsed;
+        public List<List<double>> patterns;
 
         public TheMidiFile(string locationInput)
         {
