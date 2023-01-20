@@ -34,7 +34,7 @@ namespace Orpheus_Analyser
     {
         public static void Main(string[] args)
         {
-            LoadMidiFiles();
+            //LoadMidiFiles();
         }
 
         public static void LoadMidiFiles()

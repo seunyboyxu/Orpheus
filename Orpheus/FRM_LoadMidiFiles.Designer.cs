@@ -36,9 +36,10 @@
             // 
             // PGB_LoadMidiFiles
             // 
-            this.PGB_LoadMidiFiles.Location = new System.Drawing.Point(45, 189);
+            this.PGB_LoadMidiFiles.Location = new System.Drawing.Point(60, 233);
+            this.PGB_LoadMidiFiles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PGB_LoadMidiFiles.Name = "PGB_LoadMidiFiles";
-            this.PGB_LoadMidiFiles.Size = new System.Drawing.Size(418, 23);
+            this.PGB_LoadMidiFiles.Size = new System.Drawing.Size(557, 28);
             this.PGB_LoadMidiFiles.Step = 1;
             this.PGB_LoadMidiFiles.TabIndex = 0;
             // 
@@ -47,9 +48,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(25, 62);
+            this.label1.Location = new System.Drawing.Point(33, 76);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(450, 21);
+            this.label1.Size = new System.Drawing.Size(572, 27);
             this.label1.TabIndex = 1;
             this.label1.Text = "Press the button to sync the midi folder";
             // 
@@ -57,9 +59,10 @@
             // 
             this.BTN_Run.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTN_Run.ForeColor = System.Drawing.Color.Black;
-            this.BTN_Run.Location = new System.Drawing.Point(45, 138);
+            this.BTN_Run.Location = new System.Drawing.Point(60, 170);
+            this.BTN_Run.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BTN_Run.Name = "BTN_Run";
-            this.BTN_Run.Size = new System.Drawing.Size(91, 33);
+            this.BTN_Run.Size = new System.Drawing.Size(121, 41);
             this.BTN_Run.TabIndex = 2;
             this.BTN_Run.Text = "Run";
             this.BTN_Run.UseVisualStyleBackColor = true;
@@ -69,9 +72,10 @@
             // 
             this.BTN_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTN_Cancel.ForeColor = System.Drawing.Color.Black;
-            this.BTN_Cancel.Location = new System.Drawing.Point(370, 138);
+            this.BTN_Cancel.Location = new System.Drawing.Point(493, 170);
+            this.BTN_Cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BTN_Cancel.Name = "BTN_Cancel";
-            this.BTN_Cancel.Size = new System.Drawing.Size(93, 33);
+            this.BTN_Cancel.Size = new System.Drawing.Size(124, 41);
             this.BTN_Cancel.TabIndex = 3;
             this.BTN_Cancel.Text = "Cancel";
             this.BTN_Cancel.UseVisualStyleBackColor = true;
@@ -79,16 +83,17 @@
             // 
             // FRM_LoadMidiFiles
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(504, 311);
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ClientSize = new System.Drawing.Size(669, 373);
             this.Controls.Add(this.BTN_Cancel);
             this.Controls.Add(this.BTN_Run);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PGB_LoadMidiFiles);
-            this.MaximumSize = new System.Drawing.Size(520, 350);
-            this.MinimumSize = new System.Drawing.Size(520, 350);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximumSize = new System.Drawing.Size(687, 420);
+            this.MinimumSize = new System.Drawing.Size(687, 420);
             this.Name = "FRM_LoadMidiFiles";
             this.Text = "LoadMidiFIles";
             this.ResumeLayout(false);
