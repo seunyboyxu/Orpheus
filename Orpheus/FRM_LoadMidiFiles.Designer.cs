@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BTN_Run = new System.Windows.Forms.Button();
             this.BTN_Cancel = new System.Windows.Forms.Button();
+            this.LBL_Warning = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // PGB_LoadMidiFiles
@@ -81,12 +82,23 @@
             this.BTN_Cancel.UseVisualStyleBackColor = true;
             this.BTN_Cancel.Click += new System.EventHandler(this.BTN_Cancel_Click);
             // 
+            // LBL_Warning
+            // 
+            this.LBL_Warning.AutoSize = true;
+            this.LBL_Warning.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBL_Warning.Location = new System.Drawing.Point(150, 124);
+            this.LBL_Warning.Name = "LBL_Warning";
+            this.LBL_Warning.Size = new System.Drawing.Size(361, 22);
+            this.LBL_Warning.TabIndex = 4;
+            this.LBL_Warning.Text = "WARNING THIS WILL TAKE A LONG TIME";
+            // 
             // FRM_LoadMidiFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(669, 373);
+            this.Controls.Add(this.LBL_Warning);
             this.Controls.Add(this.BTN_Cancel);
             this.Controls.Add(this.BTN_Run);
             this.Controls.Add(this.label1);
@@ -107,5 +119,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BTN_Run;
         private System.Windows.Forms.Button BTN_Cancel;
+        private System.Windows.Forms.Label LBL_Warning;
     }
 }

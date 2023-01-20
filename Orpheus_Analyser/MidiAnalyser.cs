@@ -30,11 +30,23 @@ using System.Text.Json;
 
 namespace Orpheus_Analyser
 {
+    
     public class MidiAnalyser
     {
+        public int NumberOfFiles = 2;
         public static void Main(string[] args)
         {
             //LoadMidiFiles();
+            Console.WriteLine("Number of Files: " + GetNumberOfFiles());
+
+        }
+
+        public static int GetNumberOfFiles() 
+        {
+            int count = 0;
+            string path = "/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/midi file list";
+            foreach(string file in Directory.EnumerateFiles(path, "*", SearchOption.AllDirectories)){ count++; }
+            return count;
         }
 
         public static void LoadMidiFiles()
