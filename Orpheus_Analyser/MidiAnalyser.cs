@@ -83,14 +83,14 @@ namespace Orpheus_Analyser
 
     public class TheMidiFile
     {
-        public string filename;
-        public MidiFile midiFile;
-        public string location;
-        public double bpm;
-        public string TimeSig;
-        public List<string> Top10Notes;
-        public List<string> AllNotesUsed;
-        public List<List<double>> patterns;
+        public string filename {get; set;}
+        public MidiFile midiFile {get; set;}
+        public string location { get; set; }
+        public double bpm { get; set; }
+        public string TimeSig { get; set; }
+        public List<string> Top10Notes { get; set; }
+        public List<string> AllNotesUsed { get; set; }
+        public List<List<double>> patterns { get; set; }
 
         public TheMidiFile(string locationInput)
         {
