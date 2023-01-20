@@ -146,7 +146,7 @@ namespace Orpheus_Analyser
             Tempo tempo = fileTimedata.GetTempoAtTime(timeSpan1);
             //This converts the tempo into bpm which is used universaly so it is a good starting point for calculations. 
             //it puts it into a double variable
-            double BPM = tempo.BeatsPerMinute;
+            double BPM = (int)tempo.BeatsPerMinute;
             //I then return the final value
             return BPM;
 
