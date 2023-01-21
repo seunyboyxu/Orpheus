@@ -20,6 +20,7 @@ using Melanchall.DryWetMidi.Multimedia;
 using System.Collections;
 using System.Numerics;
 
+
 //machine learning LSTM
 using MathNet.Numerics.LinearAlgebra;
 using System.Runtime.CompilerServices;
@@ -33,7 +34,8 @@ namespace Orpheus_Analyser
     
     public class MidiAnalyser
     {
-        public int NumberOfFiles = 2;
+        public static int NumberOfFiles = GetNumberOfFiles();
+        public static int ProgressTracker = 0;
         public static void Main(string[] args)
         {
             //LoadMidiFiles();
@@ -51,7 +53,7 @@ namespace Orpheus_Analyser
 
         public static void LoadMidiFiles()
         {
-
+            
             List<TheMidiFile> AllMidiFiles = new List<TheMidiFile>();
             string path = "/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/midi file list";
             int count = 0;
@@ -88,6 +90,7 @@ namespace Orpheus_Analyser
                 }
 
                 count++;
+                ProgressTracker ++;
             }
         }
 

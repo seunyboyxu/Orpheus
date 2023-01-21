@@ -42,7 +42,9 @@
             this.PGB_LoadMidiFiles.Name = "PGB_LoadMidiFiles";
             this.PGB_LoadMidiFiles.Size = new System.Drawing.Size(557, 28);
             this.PGB_LoadMidiFiles.Step = 1;
+            this.PGB_LoadMidiFiles.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.PGB_LoadMidiFiles.TabIndex = 0;
+            this.PGB_LoadMidiFiles.Click += new System.EventHandler(this.PGB_LoadMidiFiles_Click);
             // 
             // label1
             // 
