@@ -91,6 +91,7 @@ namespace Orpheus_Analyser
 
                 count++;
                 ProgressTracker ++;
+                
             }
         }
 

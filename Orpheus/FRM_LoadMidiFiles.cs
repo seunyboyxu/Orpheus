@@ -14,18 +14,28 @@ namespace Orpheus
 {
     public partial class FRM_LoadMidiFiles : Form
     {
-        int total = Orpheus_Analyser.MidiAnalyser.NumberOfFiles;
+        public int total = Orpheus_Analyser.MidiAnalyser.NumberOfFiles;
         public FRM_LoadMidiFiles()
         {
+            
             InitializeComponent();
-            RunAsync();
+
         }
 
         public void ProgressBarChanger()
         {
-            PGB_LoadMidiFiles.Value = Orpheus_Analyser.MidiAnalyser.ProgressTracker;
-            
-            PGB_LoadMidiFiles.Maximum = total;
+            //while (PGB_LoadMidiFiles.Value != PGB_LoadMidiFiles.Maximum)
+            //{
+            //    PGB_LoadMidiFiles.Value = Orpheus_Analyser.MidiAnalyser.ProgressTracker;
+
+            //    PGB_LoadMidiFiles.Maximum = total;
+            //}
+
+            for(int i = 0; i < PGB_LoadMidiFiles.Maximum; i++) 
+            {
+                i++;
+                PGB_LoadMidiFiles.Value = i;
+            }
 
 
         }
@@ -43,7 +53,7 @@ namespace Orpheus
 
         private void BTN_Run_Click(object sender, EventArgs e)
         {
-            MidiAnalyser.LoadMidiFiles();
+            //ProgressBarChanger();
             FRM_MainPage mainPage = new FRM_MainPage();
             mainPage.ShowDialog();
             this.Close();
