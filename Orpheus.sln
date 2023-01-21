@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orpheus_Analyser", "Orpheus
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orpheus_MidiFileMaker", "Orpheus_MidiFileMaker\Orpheus_MidiFileMaker.csproj", "{F5220D90-1FA8-456B-8B58-6CC14E5B9630}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4B9FD4E9-07C5-414F-AB06-0082889BD3D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
