@@ -19,23 +19,22 @@ namespace Orpheus
         {
             
             InitializeComponent();
-
+            RunAsync();
         }
 
         public void ProgressBarChanger()
         {
-            //while (PGB_LoadMidiFiles.Value != PGB_LoadMidiFiles.Maximum)
-            //{
-            //    PGB_LoadMidiFiles.Value = Orpheus_Analyser.MidiAnalyser.ProgressTracker;
-
-            //    PGB_LoadMidiFiles.Maximum = total;
-            //}
-
-            for(int i = 0; i < PGB_LoadMidiFiles.Maximum; i++) 
+            PGB_LoadMidiFiles.Maximum = total;
+            while (PGB_LoadMidiFiles.Value != PGB_LoadMidiFiles.Maximum)
             {
-                i++;
-                PGB_LoadMidiFiles.Value = i;
+                
+                PGB_LoadMidiFiles.Value = Orpheus_Analyser.MidiAnalyser.ProgressTracker;
+
+                
             }
+
+
+
 
 
         }

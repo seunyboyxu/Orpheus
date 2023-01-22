@@ -28,6 +28,7 @@ using System.ComponentModel;
 
 //JSON stuff
 using System.Text.Json;
+using System.Threading;
 
 namespace Orpheus_Analyser
 {
@@ -38,9 +39,30 @@ namespace Orpheus_Analyser
         public static int ProgressTracker = 0;
         public static void Main(string[] args)
         {
-            //LoadMidiFiles();
             Console.WriteLine("Number of Files: " + GetNumberOfFiles());
+            MidiAnalyser_LoadingPage LoadingPage = new MidiAnalyser_LoadingPage();
 
+        }
+
+        public void Loader() 
+        {
+             
+             RunAsync();
+        }
+
+        public void RunAsync()
+        {
+            Task.Run(() => ProgressBarChanger());
+        }
+
+        public void ProgressBarChanger()
+        {
+            while (ProgressTracker != NumberOfFiles)
+            {
+
+                //LoadingPage.SetProgressBar(ProgressTracker, NumberOfFiles);
+
+            }
         }
 
         public static int GetNumberOfFiles() 
@@ -53,7 +75,6 @@ namespace Orpheus_Analyser
 
         public static void LoadMidiFiles()
         {
-            
             List<TheMidiFile> AllMidiFiles = new List<TheMidiFile>();
             string path = "/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/midi file list";
             int count = 0;
