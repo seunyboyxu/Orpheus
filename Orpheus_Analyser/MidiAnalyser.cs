@@ -40,29 +40,9 @@ namespace Orpheus_Analyser
         public static void Main(string[] args)
         {
             Console.WriteLine("Number of Files: " + GetNumberOfFiles());
-            MidiAnalyser_LoadingPage LoadingPage = new MidiAnalyser_LoadingPage();
+            
 
-        }
-
-        public void Loader() 
-        {
-             
-             RunAsync();
-        }
-
-        public void RunAsync()
-        {
-            Task.Run(() => ProgressBarChanger());
-        }
-
-        public void ProgressBarChanger()
-        {
-            while (ProgressTracker != NumberOfFiles)
-            {
-
-                //LoadingPage.SetProgressBar(ProgressTracker, NumberOfFiles);
-
-            }
+            //LoadMidiFiles();
         }
 
         public static int GetNumberOfFiles() 
@@ -71,6 +51,12 @@ namespace Orpheus_Analyser
             string path = "/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/midi file list";
             foreach(string file in Directory.EnumerateFiles(path, "*", SearchOption.AllDirectories)){ count++; }
             return count;
+            
+        }
+
+        public static void Pause() 
+        {
+            Thread.Sleep(1000);
         }
 
         public static void LoadMidiFiles()
@@ -83,9 +69,10 @@ namespace Orpheus_Analyser
                 if (count == 100)
                 {
                     string json = JsonSerializer.Serialize(AllMidiFiles);
-                    System.IO.File.AppendAllText("midiData.json", json);
+                    System.IO.File.AppendAllText("MidiData.json", json);
                     AllMidiFiles.Clear();
                     count = 0;
+                    Pause();
 
                 }
 
@@ -122,7 +109,7 @@ namespace Orpheus_Analyser
     public class TheMidiFile
     {
         public string filename {get; set;}
-        public MidiFile midiFile {get; set;}
+        public MidiFile midiFile;
         public string location { get; set; }
         public double bpm { get; set; }
         public string TimeSig { get; set; }
