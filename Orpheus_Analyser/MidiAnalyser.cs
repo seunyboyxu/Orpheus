@@ -85,7 +85,8 @@ namespace Orpheus_Analyser
                     }
                     catch (Exception ex)
                     {
-                        Analysis.errors.Add(ex.ToString());
+                        Analysis.errors.Add(ex.ToString(
+                            ));
                     }
                 }
 
