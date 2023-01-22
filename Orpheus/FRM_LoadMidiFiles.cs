@@ -41,7 +41,7 @@ namespace Orpheus
 
         public void RunAsync()
         {
-            Task.Run(()=> ProgressBarChanger());
+            Task.Run(()=> MidiAnalyser.LoadMidiFiles());
         }
         private void BTN_Cancel_Click(object sender, EventArgs e)
         {
@@ -52,7 +52,8 @@ namespace Orpheus
 
         private void BTN_Run_Click(object sender, EventArgs e)
         {
-            //ProgressBarChanger();
+            RunAsync();
+            Thread.Sleep(10000);
             FRM_MainPage mainPage = new FRM_MainPage();
             mainPage.ShowDialog();
             this.Close();
