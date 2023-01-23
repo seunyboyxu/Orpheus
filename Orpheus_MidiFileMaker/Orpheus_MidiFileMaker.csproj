@@ -78,5 +78,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Orpheus_Analyser\Orpheus_Analyser.csproj">
+      <Project>{0d0ab867-a627-4063-ac35-21ae6f1694f9}</Project>
+      <Name>Orpheus_Analyser</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
