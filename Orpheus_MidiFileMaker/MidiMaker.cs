@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Orpheus_Analyser;
 using System.Text.Json;
+using System.Security.Cryptography.X509Certificates;
+using System.IO;
 
 namespace Orpheus_MidiFileMaker
 {
@@ -12,11 +14,14 @@ namespace Orpheus_MidiFileMaker
     {
         static void Main(string[] args)
         {
+            string[] excludedNotes = new string[0];
+            InputData data = new InputData("12412", excludedNotes, 120, "4/4", 297369);
+            Generate(data);
         }
 
         public static void Generate(InputData UserData) 
         {
-            string path = "/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/midi file list/MidiData.json";
+            string path = "C:/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/MidiDataTest.json";
             int bpm = UserData.GetBPM();
             string timesig = UserData.GetTimeSig();
 
@@ -25,12 +30,22 @@ namespace Orpheus_MidiFileMaker
             //BPM, TimeSig
             //Take that data as TheMidiFile Objects
             //Put it in a new list
-
+            
         }
 
         public static List<TheMidiFile> GetMidiFiles(string path, int bpm, string timesig) 
         {
-            List<TheMidiFile> ALlFiles = JsonSerializer.Deserialize<List<TheMidiFile>>(path);
+            var options = new JsonSerializerOptions
+            {
+                AllowTrailingCommas = true
+                
+                
+            };
+
+            string jsonContents = File.ReadAllText(path);
+            List<TheMidiFile> AllFiles = JsonSerializer.Deserialize<List<TheMidiFile>>(jsonContents, options);
+            var FinalList = AllFiles.Where(x => (int)x.GetBPM() == bpm && x.GetTimeSig() == timesig).ToList();
+            return FinalList;
         }
        
 

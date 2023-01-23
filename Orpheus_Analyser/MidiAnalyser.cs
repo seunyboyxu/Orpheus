@@ -42,7 +42,7 @@ namespace Orpheus_Analyser
             Console.WriteLine("Number of Files: " + GetNumberOfFiles());
             
 
-            //LoadMidiFiles();
+            LoadMidiFiles();
         }
 
         public static int GetNumberOfFiles() 
@@ -61,18 +61,25 @@ namespace Orpheus_Analyser
 
         public static void LoadMidiFiles()
         {
+            var options = new JsonSerializerOptions 
+            { 
+                WriteIndented = true,
+                AllowTrailingCommas = true
+            };
             List<TheMidiFile> AllMidiFiles = new List<TheMidiFile>();
             string path = "/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/midi file list";
             int count = 0;
+            int offloader = 100;
             foreach (string file in Directory.EnumerateFiles(path, "*", SearchOption.AllDirectories))
             {
-                if (count == 100)
+                if (count == offloader)
                 {
-                    string json = JsonSerializer.Serialize(AllMidiFiles);
-                    System.IO.File.AppendAllText("MidiData.json", json);
+                    string json = JsonSerializer.Serialize(AllMidiFiles, options);
+                    System.IO.File.AppendAllText("MidiDataTest.json", json);
                     AllMidiFiles.Clear();
                     count = 0;
                     Pause();
+                    break;
 
                 }
 
@@ -117,12 +124,15 @@ namespace Orpheus_Analyser
         public List<string> AllNotesUsed { get; set; }
         public List<List<double>> patterns { get; set; }
 
+        public TheMidiFile() { }
         public TheMidiFile(string locationInput)
         {
             location = locationInput;
             midiFile = MidiFile.Read(locationInput);
             GetFileName();
         }
+
+        
 
         
         public void SetBPM(double x) { bpm = x;  }
