@@ -7,6 +7,7 @@ using Orpheus_Analyser;
 using System.Text.Json;
 using System.Security.Cryptography.X509Certificates;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Orpheus_MidiFileMaker
 {
@@ -26,6 +27,8 @@ namespace Orpheus_MidiFileMaker
             string timesig = UserData.GetTimeSig();
 
             List<TheMidiFile> CollectedFiles = GetMidiFiles(path, bpm, timesig);
+            int PatternChooser = UserData.GetPatternSeedInt();
+
             //Search JSON file for relevant information
             //BPM, TimeSig
             //Take that data as TheMidiFile Objects
@@ -134,6 +137,12 @@ namespace Orpheus_MidiFileMaker
         public string GetTimeSig() 
         {
             return TimeSig;
+        }
+
+        public int GetPatternSeedInt() 
+        { 
+            int x = Convert.ToInt32(PatternSeed);
+            return x; 
         }
     }
 }
