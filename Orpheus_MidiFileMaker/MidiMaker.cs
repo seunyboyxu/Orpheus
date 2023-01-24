@@ -17,8 +17,8 @@ namespace Orpheus_MidiFileMaker
         {
             string[] excludedNotes = new string[0];
             InputData data = new InputData("539472", excludedNotes, 120, "4/4", 5);
-            //Generate(data);
-            Console.WriteLine(Analysis.ConvertLetterToMidiNote("A3"));
+            Generate(data);
+            
         }
 
         public static void Generate(InputData UserData) 
@@ -30,7 +30,14 @@ namespace Orpheus_MidiFileMaker
             List<TheMidiFile> CollectedFiles = GetMidiFiles(path, bpm, timesig);
             int PatternChooser = UserData.GetPatternSeedInt();
 
+            int[] exlcudedNotes = ExcludedNoteLettersToNumbers(UserData.GetExcludedNotes());
+
             
+        }
+
+        public static int[] ExcludedNoteLettersToNumbers(string[] x) 
+        {
+            return x.Select(z => Analysis.ConvertLetterToMidiNote(z)).ToArray();
         }
 
         public static List<TheMidiFile> GetMidiFiles(string path, int bpm, string timesig) 
@@ -145,6 +152,11 @@ namespace Orpheus_MidiFileMaker
         { 
             int x = Convert.ToInt32(PatternSeed);
             return x; 
+        }
+
+        public string[] GetExcludedNotes() 
+        {
+            return ExcludedNotes;
         }
     }
 }
