@@ -205,6 +205,65 @@ namespace Orpheus_Analyser
 
         }
 
+        public static int ConvertLetterToMidiNote(string letter)
+        {
+            // Extract the note name (A, B, C, D, E, F, or G) and octave from the input string
+            string noteName = letter.Substring(0, letter.Length - 1);
+            int octave = int.Parse(letter.Substring(letter.Length - 1));
+
+            // Convert the note name to a note number (0-11)
+            int note;
+            switch (noteName)
+            {
+                case "C":
+                    note = 0;
+                    break;
+                case "C#":
+                case "Db":
+                    note = 1;
+                    break;
+                case "D":
+                    note = 2;
+                    break;
+                case "D#":
+                case "Eb":
+                    note = 3;
+                    break;
+                case "E":
+                    note = 4;
+                    break;
+                case "F":
+                    note = 5;
+                    break;
+                case "F#":
+                case "Gb":
+                    note = 6;
+                    break;
+                case "G":
+                    note = 7;
+                    break;
+                case "G#":
+                case "Ab":
+                    note = 8;
+                    break;
+                case "A":
+                    note = 9;
+                    break;
+                case "A#":
+                case "Bb":
+                    note = 10;
+                    break;
+                case "B":
+                    note = 11;
+                    break;
+                default:
+                    return -1;
+            }
+
+            // Calculate the MIDI number by adding the octave number (0-9) and the note number (0-11)
+            return (octave + 1) * 12 + note;
+        }
+
         public static List<string> ConvertMidiNoteToLetter(List<int> numbers)
         {
             List<string> result = new List<string>();

@@ -17,7 +17,8 @@ namespace Orpheus_MidiFileMaker
         {
             string[] excludedNotes = new string[0];
             InputData data = new InputData("539472", excludedNotes, 120, "4/4", 5);
-            Generate(data);
+            //Generate(data);
+            Console.WriteLine(Analysis.ConvertLetterToMidiNote("A3"));
         }
 
         public static void Generate(InputData UserData) 
@@ -52,11 +53,11 @@ namespace Orpheus_MidiFileMaker
             return FinalList;
         }
 
-        public static int PatternSeedGen(int x)
+        public static int PatternSeedGen(int z)
         {
             int final = 0;
 
-            int[] NumArr = x.ToString().Select(x => x - 48).ToArray();
+            int[] NumArr = z.ToString().Select(x => x - 48).ToArray();
 
             //Multiply every two digits and put into three seperate number variables
             int num1 = NumArr[0] * NumArr[1];
