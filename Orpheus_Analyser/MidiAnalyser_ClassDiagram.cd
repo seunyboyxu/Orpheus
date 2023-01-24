@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Orpheus_Analyser.MidiAnalyser">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAEAAAAAAgAAAAAAACAAABAAAAAA=</HashCode>
+      <FileName>MidiAnalyser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Orpheus_Analyser.TheMidiFile">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAIAAABAABgAQAAUAAEAEAACQAAAAAAAAMEBAAQAEAA=</HashCode>
+      <FileName>MidiAnalyser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Orpheus_Analyser.Analysis">
+    <Position X="1" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAQAIAQwAAAAEAAAAAQAAAAQIAAAABAAAAACA=</HashCode>
+      <FileName>MidiAnalyser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
