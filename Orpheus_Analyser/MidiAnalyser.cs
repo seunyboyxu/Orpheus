@@ -210,7 +210,7 @@ namespace Orpheus_Analyser
             List<string> result = new List<string>();
             foreach (int num in numbers)
             {
-                // Calculate the octave by dividing the number by 12 and adding 1
+                // Calculate the octave by dividing the number by 12 and subtracting 1
                 int octave = (num / 12) - 1;
 
                 // Calculate the note by taking the number mod 12

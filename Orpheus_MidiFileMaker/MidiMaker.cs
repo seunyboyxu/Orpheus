@@ -29,15 +29,16 @@ namespace Orpheus_MidiFileMaker
             List<TheMidiFile> CollectedFiles = GetMidiFiles(path, bpm, timesig);
             int PatternChooser = UserData.GetPatternSeedInt();
 
-            //Search JSON file for relevant information
-            //BPM, TimeSig
-            //Take that data as TheMidiFile Objects
-            //Put it in a new list
             
         }
 
         public static List<TheMidiFile> GetMidiFiles(string path, int bpm, string timesig) 
         {
+
+            //Search JSON file for relevant information
+            //BPM, TimeSig
+            //Take that data as TheMidiFile Objects
+            //Put it in a new list
             var options = new JsonSerializerOptions
             {
                 AllowTrailingCommas = true
