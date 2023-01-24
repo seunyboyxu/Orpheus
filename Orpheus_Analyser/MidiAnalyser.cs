@@ -79,7 +79,7 @@ namespace Orpheus_Analyser
                     AllMidiFiles.Clear();
                     count = 0;
                     Pause();
-                    break;
+                    
 
                 }
 

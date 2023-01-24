@@ -37,8 +37,8 @@ namespace Orpheus
         private void BTN_PatternSeedGen_Click(object sender, EventArgs e)
         {
             Random random= new Random();
-            int seedINT1 = random.Next(10000, 90000);
-            int seedINT2 = random.Next(10000, 90000);
+            int seedINT1 = random.Next(100, 900);
+            int seedINT2 = random.Next(100, 900);
             string seed = seedINT1.ToString() + seedINT2.ToString();
             TXBX_PatternSeed.Text = seed;
         }
