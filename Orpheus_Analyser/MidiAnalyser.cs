@@ -40,9 +40,15 @@ namespace Orpheus_Analyser
         public static void Main(string[] args)
         {
             Console.WriteLine("Number of Files: " + GetNumberOfFiles());
-            
 
-            LoadMidiFiles();
+
+
+            //LoadMidiFiles();
+
+            //test1 chords
+            string path = "C:/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/midi file list/A/André Hazes - 'N-Beetje-Verliefd.mid";
+            MidiFile testFile = MidiFile.Read(path);
+            Console.WriteLine(Analysis.GetAllCHords(testFile));
         }
 
         public static int GetNumberOfFiles() 
@@ -379,6 +385,35 @@ namespace Orpheus_Analyser
 
 
             return NMNotes.ToList();
+        }
+
+        public static List<string> GetAllCHords(MidiFile file) 
+        {
+            IEnumerable<TrackChunk> chunks = file.GetTrackChunks();
+
+            ICollection<Chord> chords = new List<Chord>();
+
+            List<string> AllChords = new List<string>();
+
+            foreach(var chunk in chunks) 
+            {
+                chords = chunk.GetChords();
+
+                var temp = chords.ToList();
+
+                foreach(var chord in temp) 
+                {
+                    AllChords.Add(chord.ToString());
+                }
+
+                
+
+
+            }
+
+            //Filter chords to only have 3 letters
+
+            return AllChords;
         }
 
         public static List<string> AllUsedNotes(MidiFile midifile)

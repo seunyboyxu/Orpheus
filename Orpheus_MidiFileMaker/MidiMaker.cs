@@ -27,10 +27,17 @@ namespace Orpheus_MidiFileMaker
             int bpm = UserData.GetBPM();
             string timesig = UserData.GetTimeSig();
 
+            //collects all the midifile objects found with specified data
             List<TheMidiFile> CollectedFiles = GetMidiFiles(path, bpm, timesig);
+
+            //Chooses a number for how I will iterate through the pattern data
             int PatternChooser = UserData.GetPatternSeedInt();
 
+            //Gets a list of excluded notes as their midi number format
             int[] exlcudedNotes = ExcludedNoteLettersToNumbers(UserData.GetExcludedNotes());
+
+            //randomness
+
 
             
         }
