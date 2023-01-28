@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 using System.Security.Cryptography.X509Certificates;
 //These extra libraries are needed to access the drywetmidi functions
 using Melanchall.DryWetMidi.Common;
@@ -43,12 +44,12 @@ namespace Orpheus_Analyser
 
 
 
-            //LoadMidiFiles();
+            LoadMidiFiles();
 
             //test1 chords
-            string path = "C:/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/midi file list/A/André Hazes - 'N-Beetje-Verliefd.mid";
-            MidiFile testFile = MidiFile.Read(path);
-            Console.WriteLine(Analysis.GetAllCHords(testFile));
+            //string path = "C:/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/midi file list/A/André Hazes - 'N-Beetje-Verliefd.mid";
+            //MidiFile testFile = MidiFile.Read(path);
+            //Console.WriteLine(Analysis.GetAllCHords(testFile));
         }
 
         public static int GetNumberOfFiles() 
@@ -81,7 +82,7 @@ namespace Orpheus_Analyser
                 if (count == offloader)
                 {
                     string json = JsonSerializer.Serialize(AllMidiFiles, options);
-                    System.IO.File.AppendAllText("MidiDataTest.json", json);
+                    System.IO.File.AppendAllText("MidiData.json", json);
                     AllMidiFiles.Clear();
                     count = 0;
                     Pause();
@@ -412,6 +413,12 @@ namespace Orpheus_Analyser
             }
 
             //Filter chords to only have 3 letters
+            string pattern = "^[A-G][0-9] [A-G][0-9] [A-G][0-9]$";
+            AllChords = AllChords.Where(s => Regex.IsMatch(s, pattern)).ToList();
+            //get rid of chord duplicates
+            AllChords = AllChords.Distinct().ToList();
+
+
 
             return AllChords;
         }
