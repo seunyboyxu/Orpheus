@@ -324,16 +324,16 @@
             this.CMBX_KeySigniture.FormattingEnabled = true;
             this.CMBX_KeySigniture.Items.AddRange(new object[] {
             "C ",
-            "C#/Db",
+            "C#",
             "D",
-            "D#/Eb",
+            "D#",
             "E",
             "F",
-            "F#/Gb",
+            "F#",
             "G",
-            "G#/Ab",
+            "G#",
             "A",
-            "A#/Bb",
+            "A#",
             "B"});
             this.CMBX_KeySigniture.Location = new System.Drawing.Point(724, 273);
             this.CMBX_KeySigniture.Name = "CMBX_KeySigniture";

@@ -13,6 +13,7 @@ namespace Orpheus_MidiFileMaker
 {
     public class MidiMaker
     {
+        //major scales parallel array
         string[][] notesMajScales = {
              new string[] { "C", "D", "E", "F", "G", "A", "B" },
              new string[] { "C#", "D#", "F", "F#", "G#", "A#", "C" },
@@ -30,6 +31,7 @@ namespace Orpheus_MidiFileMaker
 
         string[] notesMaj = { "C", "C#", "D", "D#", "E", "F", "G", "G#", "A", "A#", "B" };
 
+        //minor scales parallel array
         string[][] notesMinScales = {
             new string[] { "A", "B", "C", "D", "E", "F", "G" },
             new string[] { "A#", "C", "C#", "D#", "F", "F#", "A" },
@@ -45,7 +47,27 @@ namespace Orpheus_MidiFileMaker
             new string[] { "G#", "A#", "B", "C#", "D#", "E", "G" }
         };
 
-        string[] notesMin = { "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#" };
+        //chords parallel
+        string[] CommonChordNames = {"major", "minor", "diminshed", "augmented",
+            "major 7th", "Dominant 7th", "minor 7th", "half-diminshed 7th", "fully-diminshed 7th"};
+        string[][] CommonChords =
+        {
+                new string[] {"1", "3", "5"},
+                new string[] {"1", "b3", "5"},
+                new string[] {"1", "b3", "b5"},
+                new string[] {"1", "3", "#5"},
+                new string[] {"1", "3", "5", "7"},
+                new string[] {"1", "3", "5", "b7"},
+                new string[] {"1", "b3", "5", "b7"},
+                new string[] {"1", "b3", "b5", "b7"},
+                new string[] {"1", "b3", "b5", "6"} 
+        };
+
+        //chord patterns
+    
+
+
+        string[] notesMin = { "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"};
 
         static void Main(string[] args)
         {
@@ -77,10 +99,34 @@ namespace Orpheus_MidiFileMaker
             //Get rid of excluded notes
             allTop10Notes.Except(notesExcludedString).ToList();
             //filter notes to get the ones in the relevant key signiture, need a function for this
+            MidiMaker midimaker = new MidiMaker();
+            allTop10Notes = midimaker.FilterKeySig(allTop10Notes, UserData.GetKeySig(), UserData.GetMajMin());
+            //Now to sort the list so its in order from A to G
+            allTop10Notes.Sort();
+            //now to deal with all the chords
 
 
 
             
+        }
+
+        public List<string> FilterKeySig(List<string> notes, string keysig, string majmin) 
+        {
+            int KeySigIndex = 0;
+            //filters the list of notes by the specified key signiture
+            switch (majmin) 
+            {
+                case "maj":
+                    KeySigIndex = Array.IndexOf(notesMaj, keysig);
+                    notes = notes.Where(x => notesMajScales[KeySigIndex].Contains(x)).ToList();
+                    break;
+                case "min":
+                    KeySigIndex = Array.IndexOf(notesMin, keysig);
+                    notes = notes.Where(x => notesMinScales[KeySigIndex].Contains(x)).ToList();
+                    break;
+            }
+
+            return notes;
         }
 
         public static int[] ExcludedNoteLettersToNumbers(string[] x) 
@@ -167,6 +213,7 @@ namespace Orpheus_MidiFileMaker
         }
 
 
+
     }
 
     public class InputData
@@ -211,5 +258,12 @@ namespace Orpheus_MidiFileMaker
         {
             return ExcludedNotes;
         }
+
+        public string GetKeySig() 
+        {
+            return KeySig;
+        }
+
+        public string GetMajMin() { return MajMin; }
     }
 }
