@@ -47,13 +47,15 @@ namespace Orpheus
         {
             string patternseed = TXBX_PatternSeed.Text;
             string[] excludednotes = LSBX_ExcludedNotes.CheckedItems.Cast<string>().ToArray();
+            string KeySig = CMBX_KeySigniture.Text;
+            string KeySigMajMin = CMBX_MajMin.Text;
             int bpm = (int)TXT_BPM.Value;
             int randomness = (int)TXT_Randomness.Value;
             string timesig = CMBX_TimeSig.Text;
 
             
             
-            InputData UserData = new InputData(patternseed, excludednotes, bpm, timesig , randomness );
+            InputData UserData = new InputData(patternseed, excludednotes, bpm, timesig , randomness, KeySig, KeySigMajMin);
             Orpheus_MidiFileMaker.MidiMaker.Generate(UserData);
             Console.WriteLine("done");
         }

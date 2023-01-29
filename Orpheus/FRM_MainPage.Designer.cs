@@ -45,6 +45,9 @@
             this.BTN_Title = new System.Windows.Forms.Button();
             this.BTN_Settings = new System.Windows.Forms.Button();
             this.BTN_LoadMidiFiles = new System.Windows.Forms.Button();
+            this.PCBX_KeySigniture = new System.Windows.Forms.PictureBox();
+            this.CMBX_KeySigniture = new System.Windows.Forms.ComboBox();
+            this.CMBX_MajMin = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.PCBX_PatternSeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PCBX_ExcludedNotes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PCBX_Randomness)).BeginInit();
@@ -53,6 +56,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PCBX_Background)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TXT_BPM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TXT_Randomness)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PCBX_KeySigniture)).BeginInit();
             this.SuspendLayout();
             // 
             // PCBX_PatternSeed
@@ -70,7 +74,7 @@
             // 
             this.PCBX_ExcludedNotes.BackColor = System.Drawing.Color.Transparent;
             this.PCBX_ExcludedNotes.Image = global::Orpheus.Properties.Resources.Excluded_Notes;
-            this.PCBX_ExcludedNotes.Location = new System.Drawing.Point(354, 273);
+            this.PCBX_ExcludedNotes.Location = new System.Drawing.Point(54, 207);
             this.PCBX_ExcludedNotes.Name = "PCBX_ExcludedNotes";
             this.PCBX_ExcludedNotes.Size = new System.Drawing.Size(342, 40);
             this.PCBX_ExcludedNotes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -105,7 +109,7 @@
             this.PCBX_BPM.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.PCBX_BPM.Image = global::Orpheus.Properties.Resources.BPM;
             this.PCBX_BPM.InitialImage = null;
-            this.PCBX_BPM.Location = new System.Drawing.Point(1060, 273);
+            this.PCBX_BPM.Location = new System.Drawing.Point(1343, 207);
             this.PCBX_BPM.Margin = new System.Windows.Forms.Padding(0);
             this.PCBX_BPM.Name = "PCBX_BPM";
             this.PCBX_BPM.Size = new System.Drawing.Size(145, 50);
@@ -154,7 +158,7 @@
             // 
             this.TXT_BPM.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TXT_BPM.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TXT_BPM.Location = new System.Drawing.Point(1071, 335);
+            this.TXT_BPM.Location = new System.Drawing.Point(1358, 273);
             this.TXT_BPM.Maximum = new decimal(new int[] {
             250,
             0,
@@ -205,7 +209,7 @@
             "F#",
             "G",
             "G#"});
-            this.LSBX_ExcludedNotes.Location = new System.Drawing.Point(416, 319);
+            this.LSBX_ExcludedNotes.Location = new System.Drawing.Point(115, 273);
             this.LSBX_ExcludedNotes.MultiColumn = true;
             this.LSBX_ExcludedNotes.Name = "LSBX_ExcludedNotes";
             this.LSBX_ExcludedNotes.Size = new System.Drawing.Size(233, 124);
@@ -302,6 +306,52 @@
             this.BTN_LoadMidiFiles.UseVisualStyleBackColor = false;
             this.BTN_LoadMidiFiles.Click += new System.EventHandler(this.BTN_LoadMidiFiles_Click);
             // 
+            // PCBX_KeySigniture
+            // 
+            this.PCBX_KeySigniture.BackColor = System.Drawing.Color.Transparent;
+            this.PCBX_KeySigniture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PCBX_KeySigniture.Image = global::Orpheus.Properties.Resources.KeySignitureBTN;
+            this.PCBX_KeySigniture.Location = new System.Drawing.Point(682, 184);
+            this.PCBX_KeySigniture.Name = "PCBX_KeySigniture";
+            this.PCBX_KeySigniture.Size = new System.Drawing.Size(352, 79);
+            this.PCBX_KeySigniture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PCBX_KeySigniture.TabIndex = 17;
+            this.PCBX_KeySigniture.TabStop = false;
+            // 
+            // CMBX_KeySigniture
+            // 
+            this.CMBX_KeySigniture.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CMBX_KeySigniture.FormattingEnabled = true;
+            this.CMBX_KeySigniture.Items.AddRange(new object[] {
+            "C ",
+            "C#/Db",
+            "D",
+            "D#/Eb",
+            "E",
+            "F",
+            "F#/Gb",
+            "G",
+            "G#/Ab",
+            "A",
+            "A#/Bb",
+            "B"});
+            this.CMBX_KeySigniture.Location = new System.Drawing.Point(724, 273);
+            this.CMBX_KeySigniture.Name = "CMBX_KeySigniture";
+            this.CMBX_KeySigniture.Size = new System.Drawing.Size(147, 33);
+            this.CMBX_KeySigniture.TabIndex = 18;
+            // 
+            // CMBX_MajMin
+            // 
+            this.CMBX_MajMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CMBX_MajMin.FormattingEnabled = true;
+            this.CMBX_MajMin.Items.AddRange(new object[] {
+            "maj",
+            "min"});
+            this.CMBX_MajMin.Location = new System.Drawing.Point(903, 273);
+            this.CMBX_MajMin.Name = "CMBX_MajMin";
+            this.CMBX_MajMin.Size = new System.Drawing.Size(72, 33);
+            this.CMBX_MajMin.TabIndex = 19;
+            // 
             // FRM_MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -309,6 +359,9 @@
             this.BackgroundImage = global::Orpheus.Properties.Resources.Orpheus_MainBCKGRND1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.CMBX_MajMin);
+            this.Controls.Add(this.CMBX_KeySigniture);
+            this.Controls.Add(this.PCBX_KeySigniture);
             this.Controls.Add(this.BTN_LoadMidiFiles);
             this.Controls.Add(this.BTN_Settings);
             this.Controls.Add(this.BTN_Title);
@@ -338,6 +391,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PCBX_Background)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TXT_BPM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TXT_Randomness)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PCBX_KeySigniture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -361,6 +415,9 @@
         private System.Windows.Forms.Button BTN_Title;
         private System.Windows.Forms.Button BTN_Settings;
         private System.Windows.Forms.Button BTN_LoadMidiFiles;
+        private System.Windows.Forms.PictureBox PCBX_KeySigniture;
+        private System.Windows.Forms.ComboBox CMBX_KeySigniture;
+        private System.Windows.Forms.ComboBox CMBX_MajMin;
     }
 }
 

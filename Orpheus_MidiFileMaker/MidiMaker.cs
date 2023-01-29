@@ -16,7 +16,7 @@ namespace Orpheus_MidiFileMaker
         static void Main(string[] args)
         {
             string[] excludedNotes = new string[0];
-            InputData data = new InputData("539472", excludedNotes, 120, "4/4", 5);
+            InputData data = new InputData("539472", excludedNotes, 120, "4/4", 5, "C", "maj");
             Generate(data);
             
         }
@@ -36,7 +36,12 @@ namespace Orpheus_MidiFileMaker
             //Gets a list of excluded notes as their midi number format
             int[] exlcudedNotes = ExcludedNoteLettersToNumbers(UserData.GetExcludedNotes());
 
-            //randomness
+            //randomness + keysig
+            //we need top ten notes from all midi files
+            List<string> allTop10Notes= new List<string>();
+            foreach(var midifile in CollectedFiles) { allTop10Notes.Concat(midifile.GetTop10Notes()).ToList(); }
+            //Get rid of excluded notes
+
 
 
             
@@ -135,14 +140,19 @@ namespace Orpheus_MidiFileMaker
         private int bpm;
         private string TimeSig;
         private int Randomness;
+        private string KeySig;
+        private string MajMin;
 
-        public InputData(string patternSeed, string[] excludedNotes, int bpm, string timeSig, int randomness)
+        public InputData(string patternSeed, string[] excludedNotes, int bpm, string timeSig, int randomness, string keySig, string majMin)
         {
             PatternSeed = patternSeed;
             ExcludedNotes = excludedNotes;
             this.bpm = bpm;
             TimeSig = timeSig;
             Randomness = randomness;
+            KeySig = keySig;
+            MajMin = majMin;
+
         }
 
         public int GetBPM() 

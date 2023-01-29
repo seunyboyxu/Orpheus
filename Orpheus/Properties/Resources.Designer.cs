@@ -93,6 +93,16 @@ namespace Orpheus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap KeySignitureBTN {
+            get {
+                object obj = ResourceManager.GetObject("KeySignitureBTN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LoadMidiFiles {
             get {
                 object obj = ResourceManager.GetObject("LoadMidiFiles", resourceCulture);

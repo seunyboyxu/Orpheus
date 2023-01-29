@@ -44,12 +44,11 @@ namespace Orpheus_Analyser
 
 
 
-            LoadMidiFiles();
+            //LoadMidiFiles();
 
-            //test1 chords
-            //string path = "C:/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/midi file list/A/André Hazes - 'N-Beetje-Verliefd.mid";
-            //MidiFile testFile = MidiFile.Read(path);
-            //Console.WriteLine(Analysis.GetAllCHords(testFile));
+            
+            string path = "C:/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/midi file list/A/André Hazes - 'N-Beetje-Verliefd.mid";
+            MidiFile testFile = MidiFile.Read(path);
         }
 
         public static int GetNumberOfFiles() 
