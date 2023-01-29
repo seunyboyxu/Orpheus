@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Orpheus_MidiFileMaker.MidiMaker">
+    <Position X="6.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAABAQAAABAAAEgAAAAAAAAABAAAEBEABAAI=</HashCode>
+      <FileName>MidiMaker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Orpheus_MidiFileMaker.InputData">
+    <Position X="3.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAABQAQAEEAgAGQBAAAAAAA=</HashCode>
+      <FileName>MidiMaker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

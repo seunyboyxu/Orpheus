@@ -63,8 +63,41 @@ namespace Orpheus_MidiFileMaker
                 new string[] {"1", "b3", "b5", "6"} 
         };
 
-        //chord patterns
-    
+        //chord patterns, 4 chords
+        string[] commonChordSequences = new string[]
+{
+    "I - IV - V - IV",
+    "I - V - vi - IV",
+    "vi - IV - I - V",
+    "IV - I - V - vi",
+    "I - IV - V - vi",
+    "ii - V - I - IV",
+    "I - V - vi - iii",
+    "IV - I - vi - V",
+    "vi - iii - IV - I",
+    "ii - V - IV - I",
+    "I - vi - IV - iii",
+    "IV - ii - V - I",
+    "I - V - IV - iii",
+    "vi - IV - ii - V",
+    "iii - IV - I - V",
+    "IV - I - vi - iii",
+    "I - vi - iii - IV",
+    "ii - V - IV - vi",
+    "IV - ii - I - V",
+    "I - IV - iii - V",
+    "vi - IV - I - iii",
+    "iii - ii - V - I",
+    "IV - I - iii - vi",
+    "I - iii - vi - IV",
+    "ii - V - vi - III",
+    "I - IV - ii - V",
+    "vi - IV - iii - I",
+    "iii - ii - IV - I"
+};
+
+
+
 
 
         string[] notesMin = { "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"};
