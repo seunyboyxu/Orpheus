@@ -13,6 +13,40 @@ namespace Orpheus_MidiFileMaker
 {
     public class MidiMaker
     {
+        string[][] notesMajScales = {
+             new string[] { "C", "D", "E", "F", "G", "A", "B" },
+             new string[] { "C#", "D#", "F", "F#", "G#", "A#", "C" },
+             new string[] { "D", "E", "F#", "G", "A", "B", "C#" },
+             new string[] { "D#", "F", "G", "G#", "A#", "C", "D" },
+             new string[] { "E", "F#", "G#", "A", "B", "C#", "D#" },
+             new string[] { "F", "G", "A", "A#", "C", "D", "E" },
+             new string[] { "F#", "G#", "A#", "B", "C#", "D#", "F" },
+             new string[] { "G", "A", "B", "C", "D", "E", "F#" },
+             new string[] { "G#", "A#", "C", "C#", "D#", "F", "G" },
+             new string[] { "A", "B", "C#", "D", "E", "F#", "G#" },
+             new string[] { "A#", "C", "D", "D#", "F", "G", "A" },
+             new string[] { "B", "C#", "D#", "E", "F#", "G#", "A#" }
+        };
+
+        string[] notesMaj = { "C", "C#", "D", "D#", "E", "F", "G", "G#", "A", "A#", "B" };
+
+        string[][] notesMinScales = {
+            new string[] { "A", "B", "C", "D", "E", "F", "G" },
+            new string[] { "A#", "C", "C#", "D#", "F", "F#", "A" },
+            new string[] { "B", "C#", "D", "E", "F#", "G", "A#" },
+            new string[] { "C", "D", "D#", "F", "G", "G#", "B" },
+            new string[] { "C#", "D#", "E", "F#", "G#", "A", "C" },
+            new string[] { "D", "E", "F", "G", "A", "A#", "C#" },
+            new string[] { "D#", "F", "F#", "G#", "A#", "B", "D" },
+            new string[] { "E", "F#", "G", "A", "B", "C", "D#" },
+            new string[] { "F", "G", "G#", "A#", "C", "C#", "E" },
+            new string[] { "F#", "G#", "A", "B", "C#", "D", "F" },
+            new string[] { "G", "A", "A#", "C", "D", "D#", "F#" },
+            new string[] { "G#", "A#", "B", "C#", "D#", "E", "G" }
+        };
+
+        string[] notesMin = { "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#" };
+
         static void Main(string[] args)
         {
             string[] excludedNotes = new string[0];
@@ -33,14 +67,16 @@ namespace Orpheus_MidiFileMaker
             //Chooses a number for how I will iterate through the pattern data
             int PatternChooser = UserData.GetPatternSeedInt();
 
-            //Gets a list of excluded notes as their midi number format
-            int[] exlcudedNotes = ExcludedNoteLettersToNumbers(UserData.GetExcludedNotes());
+            //Gets a list of excluded notes in their letter format
+            string[] notesExcludedString = UserData.GetExcludedNotes();
 
             //randomness + keysig
             //we need top ten notes from all midi files
             List<string> allTop10Notes= new List<string>();
             foreach(var midifile in CollectedFiles) { allTop10Notes.Concat(midifile.GetTop10Notes()).ToList(); }
             //Get rid of excluded notes
+            allTop10Notes.Except(notesExcludedString).ToList();
+            //filter notes to get the ones in the relevant key signiture, need a function for this
 
 
 
