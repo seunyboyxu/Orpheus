@@ -137,11 +137,15 @@ namespace Orpheus_MidiFileMaker
             //Now to sort the list so its in order from A to G
             allTop10Notes.Sort();
             //now to deal with all the chords
-
+            //chord generator function
+          
+            //Note generator function
 
 
             
         }
+      public static List<List<string>> ChordGenerator(string keysig, string majmin){}
+      public static List<string> NoteGenerator(string keysig, string majmin){}
 
         public List<string> FilterKeySig(List<string> notes, string keysig, string majmin) 
         {
