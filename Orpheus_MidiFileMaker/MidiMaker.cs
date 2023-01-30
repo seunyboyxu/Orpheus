@@ -14,7 +14,7 @@ namespace Orpheus_MidiFileMaker
     public class MidiMaker
     {
         //major scales parallel array
-        string[][] notesMajScales = {
+       public string[][] notesMajScales = {
              new string[] { "C", "D", "E", "F", "G", "A", "B" },
              new string[] { "C#", "D#", "F", "F#", "G#", "A#", "C" },
              new string[] { "D", "E", "F#", "G", "A", "B", "C#" },
@@ -29,10 +29,10 @@ namespace Orpheus_MidiFileMaker
              new string[] { "B", "C#", "D#", "E", "F#", "G#", "A#" }
         };
 
-        string[] notesMaj = { "C", "C#", "D", "D#", "E", "F", "G", "G#", "A", "A#", "B" };
+        public string[] notesMaj = { "C", "C#", "D", "D#", "E", "F", "G", "G#", "A", "A#", "B" };
 
         //minor scales parallel array
-        string[][] notesMinScales = {
+        public string[][] notesMinScales = {
             new string[] { "A", "B", "C", "D", "E", "F", "G" },
             new string[] { "A#", "C", "C#", "D#", "F", "F#", "A" },
             new string[] { "B", "C#", "D", "E", "F#", "G", "A#" },
@@ -48,9 +48,9 @@ namespace Orpheus_MidiFileMaker
         };
 
         //chords parallel
-        string[] CommonChordNames = {"major", "minor", "diminshed", "augmented",
+        public string[] CommonChordNames = {"major", "minor", "diminshed", "augmented",
             "major 7th", "Dominant 7th", "minor 7th", "half-diminshed 7th", "fully-diminshed 7th"};
-        string[][] CommonChords =
+        public string[][] CommonChords =
         {
                 new string[] {"1", "3", "5"},
                 new string[] {"1", "b3", "5"},
@@ -64,7 +64,7 @@ namespace Orpheus_MidiFileMaker
         };
 
         //chord patterns, 4 chords
-        string[] commonChordSequences = new string[]
+        public string[] commonChordSequences = new string[]
 {
     "I - IV - V - IV",
     "I - V - vi - IV",
@@ -100,9 +100,9 @@ namespace Orpheus_MidiFileMaker
 
 
 
-        string[] notesMin = { "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"};
+        public string[] notesMin = { "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"};
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             string[] excludedNotes = new string[0];
             InputData data = new InputData("539472", excludedNotes, 120, "4/4", 5, "C", "maj");
