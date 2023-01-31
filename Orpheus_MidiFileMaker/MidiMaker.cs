@@ -9,6 +9,21 @@ using System.Security.Cryptography.X509Certificates;
 using System.IO;
 using System.Runtime.InteropServices;
 
+//These extra libraries are needed to access the drywetmidi functions
+using Melanchall.DryWetMidi.Common;
+using Melanchall.DryWetMidi.Core;
+using Melanchall.DryWetMidi.Interaction;
+using Melanchall.DryWetMidi.Tools;
+//using Melanchall.DryWetMidi.Devices;
+//using Melanchall.DryWetMidi.MusicTheory;
+using Melanchall.DryWetMidi.Standards;
+using Melanchall.DryWetMidi.Composing;
+using System.Net.Http.Headers;
+using Melanchall.DryWetMidi.Multimedia;
+using System.Collections;
+using System.Numerics;
+
+
 namespace Orpheus_MidiFileMaker
 {
     public class MidiMaker
@@ -93,7 +108,8 @@ namespace Orpheus_MidiFileMaker
     "ii - V - vi - III",
     "I - IV - ii - V",
     "vi - IV - iii - I",
-    "iii - ii - IV - I"
+    "iii - ii - IV - I",
+    "iii - Vi - ii - V"
 };
 
 
@@ -144,8 +160,8 @@ namespace Orpheus_MidiFileMaker
 
             
         }
-      public static List<List<string>> ChordGenerator(string keysig, string majmin){}
-      public static List<string> NoteGenerator(string keysig, string majmin){}
+      // static List<List<string>> ChordGenerator(string keysig, string majmin){}
+      //public static List<string> NoteGenerator(string keysig, string majmin){}
 
         public List<string> FilterKeySig(List<string> notes, string keysig, string majmin) 
         {
@@ -302,5 +318,18 @@ namespace Orpheus_MidiFileMaker
         }
 
         public string GetMajMin() { return MajMin; }
+    }
+
+    public class MyMidiData : InputData
+    {
+        private string location { get ; set; } 
+        private List<List<string>> Pattern8Bars { get; set; }   
+        private List<string> AllNotesUsed { get; set; }
+        private MidiFile midifile { get; set; }
+
+
+        public MyMidiData(string patternSeed, string[] excludedNotes, int bpm, string timeSig, int randomness, string keySig, string majMin) : base(patternSeed, excludedNotes, bpm, timeSig, randomness, keySig, majMin)
+        {
+        }
     }
 }
