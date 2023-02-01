@@ -62,6 +62,8 @@ namespace Orpheus_MidiFileMaker
             new string[] { "G#", "A#", "B", "C#", "D#", "E", "G" }
         };
 
+        public string[] notesMin = { "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#" };
+
         //chords parallel
         public string[] CommonChordNames = {"major", "minor", "diminshed", "augmented",
             "major 7th", "Dominant 7th", "minor 7th", "half-diminshed 7th", "fully-diminshed 7th"};
@@ -116,7 +118,7 @@ namespace Orpheus_MidiFileMaker
 
 
 
-        public string[] notesMin = { "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"};
+        
 
         public static void Main(string[] args)
         {
