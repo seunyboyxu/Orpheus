@@ -44,7 +44,7 @@ namespace Orpheus_MidiFileMaker
              new string[] { "B", "C#", "D#", "E", "F#", "G#", "A#" }
         };
 
-        public string[] notesMaj = { "C", "C#", "D", "D#", "E", "F", "G", "G#", "A", "A#", "B" };
+        public string[] notesMaj = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
 
         //minor scales parallel array
         public string[][] notesMinScales = {
@@ -124,7 +124,8 @@ namespace Orpheus_MidiFileMaker
         {
             string[] excludedNotes = new string[0];
             InputData data = new InputData("539472", excludedNotes, 120, "4/4", 5, "C", "maj");
-            Generate(data);
+            //Generate(data);
+            var tester = MyChordProcessses.ChordBuilder("B", "min", "VI", "major 7th");
             
         }
 
