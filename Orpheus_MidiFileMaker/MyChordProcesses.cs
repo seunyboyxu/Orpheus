@@ -54,6 +54,7 @@ namespace Orpheus_MidiFileMaker
         //my rules dictionary is going to be made up of a chord step object which has a attributres start and end chords
         public static  Dictionary<ChordStep, string> Rules = new Dictionary<ChordStep, string>();
 
+        //sets up the rules to be used to link chords together
         public static void SetUpRules() 
         {
             ChordStep chordstep;
