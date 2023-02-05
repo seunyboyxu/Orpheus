@@ -53,6 +53,8 @@ namespace Orpheus_MidiFileMaker
     {
         //my rules dictionary is going to be made up of a chord step object which has a attributres start and end chords
         public static  Dictionary<ChordStep, string> Rules = new Dictionary<ChordStep, string>();
+        public static Dictionary<string, string> MajorChords;
+        public static Dictionary<string, string> MinorChords;
 
         //sets up the rules to be used to link chords together
         public static void SetUpRules() 
@@ -83,8 +85,31 @@ namespace Orpheus_MidiFileMaker
             Rules.Add(chordstep, "major7_replace_both");
             chordstep = new ChordStep("II", "I");
             Rules.Add(chordstep, "major7_replace_both");
-            
-           
+
+            //MajorChord Rules
+            MajorChords = new Dictionary<string, string>()
+            {
+                {"I", "maj"},
+                {"II", "min"},
+                {"III", "min"},
+                {"IV", "maj"},
+                {"V", "maj"},
+                {"VI", "min"},
+                {"VII", "min"}
+            };
+
+            //MinorChord Rules
+            MinorChords = new Dictionary<string, string>()
+            {
+                {"I", "min"},
+                {"II", "min"},
+                {"III", "maj"},
+                {"IV", "min"},
+                {"V", "min"},
+                {"VI", "maj"},
+                {"VII", "maj"}
+
+            };
         }
         
         public MyChordProcessses() { }
@@ -93,9 +118,36 @@ namespace Orpheus_MidiFileMaker
         {
             
         }
-        public static List<List<string>> BarBuilder(string timesig, string majmin, string sequence) 
+        
+        //Ths function is going to be used to build a bar of chords, the number of chords allowed in a bar depends on the time signiture and other parameters determine which chords are going to be played
+        public static List<List<string>> BarBuilder(string timesig, string majmin, List<string> ChoppedSequence, string keysig) 
         {
-                        
+            //this creates a new chord step function. The ChoppedSequence parameter should only have 2 chords in it
+             ChordStep CurrentChordStep = new ChordStep(ChoppedSequence[0], ChoppedSequence[1]);
+
+            //create the new array to determine what chords are going to be used
+            List<string> chordsToUse = new List<string>();
+            //add the first chord and their chord type as a defualt
+            chordsToUse.Add(ChoppedSequence.First());
+
+            //use a switch to determine which set of chord rules to use to add my chords for the defualt
+            switch (majmin) 
+            {
+                //add defualt chord type from dictionary. takes the minor set or the major set depending on the specified parameter
+                case "min":   
+                    chordsToUse.Add(MinorChords[chordsToUse[0]]);
+                    break; 
+                case "maj":
+                    chordsToUse.Add(MajorChords[chordsToUse[0]]);
+                    break; 
+            }
+
+            //Determine max number of chords
+            int maxNumberOfChords = Convert.ToInt32(timesig.Split('/').ToList().First());
+           
+            
+           
+            
         }
         public static List<string> ChordBuilderTRY1(string keysig, string majmin, string chordSymbol, string chordType) 
         {
