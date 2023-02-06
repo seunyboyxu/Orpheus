@@ -143,11 +143,40 @@ namespace Orpheus_MidiFileMaker
             }
 
             //Determine max number of chords
-            int maxNumberOfChords = Convert.ToInt32(timesig.Split('/').ToList().First());
-           
-            
-           
-            
+            var maxNumberOfChordsSTR = timesig.Split('/');
+            int maxNumberOfChords = Convert.ToInt32(maxNumberOfChordsSTR[0]);
+
+            //get all the instructions from the dictionary that match a certain chordstep
+            //first make a new string list called instructions
+            List<string> instructions = new List<string>();
+            //select the chord step keys that match the current chordstep
+            //to explain it, where a key is equal to a certain key, it selects the value from that key
+            instructions = Rules.Where(x => x.Key.Equals(CurrentChordStep)).Select(x => x.Value).ToList();
+            //goes through the instructions and applys it through a function
+
+
+
+
+        }
+
+        public static List<string> InstructionReader(string instruction, List<string> ChordsToUse) 
+        {
+            //splits the instruction string into a list of each instruction part
+            List<string> instructionSplit = instruction.Split('_').ToList();
+            //switch statement for the middle part of the instruction which is either replace or add
+            switch (instructionSplit[1]) 
+            {
+                case "add":
+
+                    break;
+                case "replace":
+                    break;
+                default: 
+                    break;
+            }
+
+
+            return ChordsToUse;
         }
         public static List<string> ChordBuilderTRY1(string keysig, string majmin, string chordSymbol, string chordType) 
         {
