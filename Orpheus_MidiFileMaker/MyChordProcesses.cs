@@ -64,17 +64,17 @@ namespace Orpheus_MidiFileMaker
 
             //augmented chord rules
             chordstep = new ChordStep("I", "IV");
-            Rules.Add(chordstep, "I_aug_add");
+            Rules.Add(chordstep, "aug_add_first");
             chordstep = new ChordStep("I", "VI");
-            Rules.Add(chordstep, "I_aug_add");
+            Rules.Add(chordstep, "aug_add_first");
             chordstep = new ChordStep("V", "I");
-            Rules.Add(chordstep, "V_aug_add");
+            Rules.Add(chordstep, "aug_add_first");
 
             //diminshed chord rules
             chordstep = new ChordStep("V", "VI");
-            Rules.Add(chordstep, "V_dim_replace");
+            Rules.Add(chordstep, "dim_replace_first");
             chordstep = new ChordStep("V", "IV");
-            Rules.Add(chordstep, "V_dim_replace");
+            Rules.Add(chordstep, "dim_replace_first");
 
             //major 7 rules
             chordstep = new ChordStep("II", "V");
