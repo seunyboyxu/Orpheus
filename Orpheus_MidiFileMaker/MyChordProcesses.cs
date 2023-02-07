@@ -7,6 +7,7 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using Melanchall.DryWetMidi.Interaction;
+using Melanchall.DryWetMidi.Tools;
 using Orpheus_Analyser;
 using Orpheus_MidiFileMaker;
 
@@ -55,6 +56,11 @@ namespace Orpheus_MidiFileMaker
         public static  Dictionary<ChordStep, string> Rules = new Dictionary<ChordStep, string>();
         public static Dictionary<string, string> MajorChords;
         public static Dictionary<string, string> MinorChords;
+        //list to store previous instructions temporarily
+        public static List<string> PrevInstructions= new List<string>();
+
+        //dimished chord identifier
+        public static bool diminishedCHRD = false;
 
         //sets up the rules to be used to link chords together
         public static void SetUpRules() 
@@ -114,14 +120,16 @@ namespace Orpheus_MidiFileMaker
         
         public MyChordProcessses() { }
 
-        public static List<List<List<string>>> SequenceBuilder() 
-        {
+        //public static List<List<List<string>>> SequenceBuilder() 
+        //{
             
-        }
+        //}
         
         //Ths function is going to be used to build a bar of chords, the number of chords allowed in a bar depends on the time signiture and other parameters determine which chords are going to be played
         public static List<List<string>> BarBuilder(string timesig, string majmin, List<string> ChoppedSequence, string keysig) 
         {
+            //the final bar
+            List<List<string>> bar = new List<List<string>>();
             //this creates a new chord step function. The ChoppedSequence parameter should only have 2 chords in it
              ChordStep CurrentChordStep = new ChordStep(ChoppedSequence[0], ChoppedSequence[1]);
 
@@ -153,31 +161,92 @@ namespace Orpheus_MidiFileMaker
             //to explain it, where a key is equal to a certain key, it selects the value from that key
             instructions = Rules.Where(x => x.Key.Equals(CurrentChordStep)).Select(x => x.Value).ToList();
             //goes through the instructions and applys it through a function
+            foreach(var instruction in instructions) 
+            {
+                chordsToUse = InstructionReader(instruction, chordsToUse);
+            }
+
+            var FinalChord = ChordBuilder(keysig, majmin, chordsToUse[0], chordsToUse[1]);
+            bar.Add(FinalChord);
+            return bar;
 
 
 
 
         }
 
-        public static List<string> InstructionReader(string instruction, List<string> ChordsToUse) 
+        public static List<string> InstructionReader(string instruction, List<string> ChordsToUse)
         {
             //splits the instruction string into a list of each instruction part
             List<string> instructionSplit = instruction.Split('_').ToList();
+
+            //checks the previous instruction list for past instructions that require both items to be changed
+            if(PrevInstructions.Count > 0) 
+            {
+                //goes through each prev instruction in the list
+                foreach(var x in PrevInstructions) 
+                {
+                    //splits up the previous instruction
+                    List<string> tempSplit = instruction.Split('_').ToList();
+                    if ((tempSplit[2] == "both") && (tempSplit[1] == "replace") && !(tempSplit[0] == "dim")) 
+                    {
+                        //this will only get to this point if the previous instruction had an instruction of replace and an identifier of both
+                        //now adds the specified chord type to that chord
+                        ChordsToUse[1] = tempSplit[0];
+                    }
+                    else 
+                    {
+                        diminishedCHRD = true;
+                    }
+
+                    
+
+                    PrevInstructions.Remove(x);
+                }
+
+            }
+
             //switch statement for the middle part of the instruction which is either replace or add
-            switch (instructionSplit[1]) 
+            switch (instructionSplit[1])
             {
                 case "add":
+                    //adds a new chord to the end of the list with the same symbol but a specified type
+
+                    //adds the first note to the list
+                    ChordsToUse.Add(ChordsToUse.First());
+                    //now adds the chord type
+                    ChordsToUse.Add(instructionSplit[0]);
+
+                    //now checks to see whether to change the first, second or both chords
+
+                    if (instructionSplit[2] == "both")
+                    {
+                        //adds the previous instruction to the list of previous instructions
+                        PrevInstructions.Add(instruction);
+
+                    }
 
                     break;
                 case "replace":
+                    //replaces just the first chord type
+                    ChordsToUse[1] = instructionSplit[0];
+
+                    //now checks again to change the first, second or both chords
+                    if (instructionSplit[2] == "both") 
+                    {
+                        //adds the instruction to the previous instruction list
+                        PrevInstructions.Add(instruction);
+
+                    }
                     break;
-                default: 
-                    break;
+
+
+
+
             }
-
-
             return ChordsToUse;
         }
+        
         public static List<string> ChordBuilderTRY1(string keysig, string majmin, string chordSymbol, string chordType) 
         {
             MidiMaker midiMaker = new MidiMaker();
@@ -526,3 +595,4 @@ namespace Orpheus_MidiFileMaker
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     }
 }
+
