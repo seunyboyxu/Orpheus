@@ -14,7 +14,7 @@ using Orpheus_MidiFileMaker;
 namespace Orpheus_MidiFileMaker
 {
     //this class is to hold the start and endvalue of two chords into one object to allow to check through my list of sequences and compare with my rules
-    class ChordStep
+    public class ChordStep
     {
         private string startChord;
         private string endChord;
@@ -50,12 +50,12 @@ namespace Orpheus_MidiFileMaker
         }
 
     }
-    internal class MyChordProcessses
+    public class MyChordProcesses
     {
         //my rules dictionary is going to be made up of a chord step object which has a attributres start and end chords
-        public static  Dictionary<ChordStep, string> Rules = new Dictionary<ChordStep, string>();
-        public static Dictionary<string, string> MajorChords;
-        public static Dictionary<string, string> MinorChords;
+        public Dictionary<ChordStep, string> Rules = new Dictionary<ChordStep, string>();
+        public Dictionary<string, string> MajorChords;
+        public Dictionary<string, string> MinorChords;
         //list to store previous instructions temporarily
         public static List<string> PrevInstructions= new List<string>();
 
@@ -63,7 +63,7 @@ namespace Orpheus_MidiFileMaker
         public static bool diminishedCHRD = false;
 
         //sets up the rules to be used to link chords together
-        public static void SetUpRules() 
+        public void SetUpRules() 
         {
             ChordStep chordstep;
 
@@ -118,7 +118,7 @@ namespace Orpheus_MidiFileMaker
             };
         }
         
-        public MyChordProcessses() { }
+        public MyChordProcesses() { }
 
         //public static List<List<List<string>>> SequenceBuilder() 
         //{
@@ -126,7 +126,7 @@ namespace Orpheus_MidiFileMaker
         //}
         
         //Ths function is going to be used to build a bar of chords, the number of chords allowed in a bar depends on the time signiture and other parameters determine which chords are going to be played
-        public static List<List<string>> BarBuilder(string timesig, string majmin, List<string> ChoppedSequence, string keysig) 
+        public List<List<string>> BarBuilder(string timesig, string majmin, List<string> ChoppedSequence, string keysig) 
         {
             //the final bar
             List<List<string>> bar = new List<List<string>>();
@@ -139,6 +139,7 @@ namespace Orpheus_MidiFileMaker
             chordsToUse.Add(ChoppedSequence.First());
 
             //use a switch to determine which set of chord rules to use to add my chords for the defualt
+            MyChordProcesses processes = new MyChordProcesses();
             switch (majmin) 
             {
                 //add defualt chord type from dictionary. takes the minor set or the major set depending on the specified parameter
@@ -166,8 +167,13 @@ namespace Orpheus_MidiFileMaker
                 chordsToUse = InstructionReader(instruction, chordsToUse);
             }
 
-            var FinalChord = ChordBuilder(keysig, majmin, chordsToUse[0], chordsToUse[1]);
-            bar.Add(FinalChord);
+            
+            for(int i = 0; i < chordsToUse.Count; i += 2) 
+            {
+                var FinalChord = ChordBuilder(keysig, majmin, chordsToUse[i], chordsToUse[i+1]);
+                bar.Add(FinalChord);
+            }
+            
             return bar;
 
 
@@ -187,7 +193,7 @@ namespace Orpheus_MidiFileMaker
                 foreach(var x in PrevInstructions) 
                 {
                     //splits up the previous instruction
-                    List<string> tempSplit = instruction.Split('_').ToList();
+                    List<string> tempSplit = x.Split('_').ToList();
                     if ((tempSplit[2] == "both") && (tempSplit[1] == "replace") && !(tempSplit[0] == "dim")) 
                     {
                         //this will only get to this point if the previous instruction had an instruction of replace and an identifier of both
@@ -201,8 +207,9 @@ namespace Orpheus_MidiFileMaker
 
                     
 
-                    PrevInstructions.Remove(x);
+                    
                 }
+                PrevInstructions.Clear();
 
             }
 
@@ -415,7 +422,7 @@ namespace Orpheus_MidiFileMaker
                     //finds the index of the note in my note array 
                     int tempNoteIndex = Array.IndexOf(midiMaker.notesMaj, chosenNoteSTR);
                     //since it is a flat, i want to choose the note just below it, but i need to account for the fact that the note could be at index 0
-                    if (tempNoteIndex == 0) { tempNoteIndex = 10; } else { tempNoteIndex--; }
+                    if (tempNoteIndex == 0) { tempNoteIndex = 11; } else { tempNoteIndex--; }
                     //now takes the chosen note and puts it in the chosen note variable
                     chosenNoteSTR = midiMaker.notesMaj[tempNoteIndex];
                     break;
@@ -424,7 +431,7 @@ namespace Orpheus_MidiFileMaker
                     //finds the index of the note in my note array 
                     int tempNoteIndex1 = Array.IndexOf(midiMaker.notesMaj, chosenNoteSTR);
                     //since it is a flat, i want to choose the note just below it, but i need to account for the fact that the note could be at index 0
-                    if (tempNoteIndex1 == 0) { tempNoteIndex1 = 10; } else { tempNoteIndex1--; }
+                    if (tempNoteIndex1 == 0) { tempNoteIndex1 = 11; } else { tempNoteIndex1--; }
                     //now takes the chosen note and puts it in the chosen note variable
                     chosenNoteSTR = midiMaker.notesMaj[tempNoteIndex1];
                     break;
@@ -433,7 +440,7 @@ namespace Orpheus_MidiFileMaker
                     //finds the index of the note in my note array 
                     int tempNoteIndex2 = Array.IndexOf(midiMaker.notesMaj, chosenNoteSTR);
                     //since it is a flat, i want to choose the note just below it, but i need to account for the fact that the note could be at index 0
-                    if (tempNoteIndex2 == 10) { tempNoteIndex2 = 0; } else { tempNoteIndex2++; }
+                    if (tempNoteIndex2 == 11) { tempNoteIndex2 = 0; } else { tempNoteIndex2++; }
                     //now takes the chosen note and puts it in the chosen note variable
                     chosenNoteSTR = midiMaker.notesMaj[tempNoteIndex2];
                     break;
@@ -442,7 +449,7 @@ namespace Orpheus_MidiFileMaker
                     //finds the index of the note in my note array 
                     int tempNoteIndex3 = Array.IndexOf(midiMaker.notesMaj, chosenNoteSTR);
                     //since it is a flat, i want to choose the note just below it, but i need to account for the fact that the note could be at index 0
-                    if (tempNoteIndex3 == 0) { tempNoteIndex3 = 10; } else { tempNoteIndex3--; }
+                    if (tempNoteIndex3 == 0) { tempNoteIndex3 = 11; } else { tempNoteIndex3--; }
                     //now takes the chosen note and puts it in the chosen note variable
                     chosenNoteSTR = midiMaker.notesMaj[tempNoteIndex3];
                     break;

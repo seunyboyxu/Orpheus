@@ -65,8 +65,8 @@ namespace Orpheus_MidiFileMaker
         public string[] notesMin = { "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#" };
 
         //chords parallel
-        public string[] CommonChordNames = {"major", "minor", "diminshed", "augmented",
-            "major 7th", "Dominant 7th", "minor 7th", "half-diminshed 7th", "fully-diminshed 7th"};
+        public string[] CommonChordNames = {"maj", "min", "dim", "aug",
+            "major7", "Dominant 7th", "minor 7th", "half-diminshed 7th", "fully-diminshed 7th"};
         public string[][] CommonChords =
         {
                 new string[] {"1", "3", "5"},
@@ -125,7 +125,16 @@ namespace Orpheus_MidiFileMaker
             string[] excludedNotes = new string[0];
             InputData data = new InputData("539472", excludedNotes, 120, "4/4", 5, "C", "maj");
             //Generate(data);
-            var tester = MyChordProcessses.ChordBuilder("B", "min", "VI", "major 7th");
+            //var tester = MyChordProcesses.ChordBuilder("B", "min", "VI", "major 7th");
+            List<string> expectedNotes = new List<string>();
+            expectedNotes.Add("II"); expectedNotes.Add("V");
+            MyChordProcesses processes = new MyChordProcesses();
+            processes.SetUpRules();
+            var BarBuildTester = processes.BarBuilder("4/4", "maj", expectedNotes, "A");
+            expectedNotes.Clear();
+            expectedNotes.Add("V"); expectedNotes.Add("I");
+            var BarBuilderTester2 = processes.BarBuilder("4/4", "maj", expectedNotes, "A");
+
             
         }
 

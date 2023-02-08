@@ -44,7 +44,7 @@
             this.BTN_Title.Location = new System.Drawing.Point(9, 9);
             this.BTN_Title.Margin = new System.Windows.Forms.Padding(0);
             this.BTN_Title.Name = "BTN_Title";
-            this.BTN_Title.Size = new System.Drawing.Size(500, 119);
+            this.BTN_Title.Size = new System.Drawing.Size(370, 93);
             this.BTN_Title.TabIndex = 2;
             this.BTN_Title.UseVisualStyleBackColor = false;
             this.BTN_Title.Click += new System.EventHandler(this.BTN_Title_Click);
@@ -57,9 +57,9 @@
             this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
             this.button1.FlatAppearance.BorderSize = 5;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(499, 9);
+            this.button1.Location = new System.Drawing.Point(424, 8);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(500, 117);
+            this.button1.Size = new System.Drawing.Size(476, 94);
             this.button1.TabIndex = 3;
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -69,9 +69,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Orpheus.Properties.Resources.Orpheus_MainBCKGRND1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.ClientSize = new System.Drawing.Size(1206, 761);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.BTN_Title);
+            this.MaximumSize = new System.Drawing.Size(1222, 800);
+            this.MinimumSize = new System.Drawing.Size(1222, 800);
             this.Name = "FRM_SettingsPage";
             this.Text = "Orpheus - Settings";
             this.ResumeLayout(false);
