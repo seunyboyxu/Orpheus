@@ -117,14 +117,47 @@ namespace Orpheus_MidiFileMaker
 
             };
         }
-        
+        public string RemoveSpaces(string input)
+        {
+            return input.Replace(" ", string.Empty);
+        }
+
         public MyChordProcesses() { }
 
-        //public static List<List<List<string>>> SequenceBuilder() 
-        //{
-            
-        //}
-        
+        public List<List<List<string>>> SequenceBuilder(string sequence, string timesig, string majmin, string keysig)
+        {
+            //a sequence is made of a a list of chord in a list of bars which is put in a list
+            var FinalSequence = new List<List<List<string>>>();
+
+            //split the sequence
+            var SplitSequence = sequence.Split('-').ToList(); 
+            //gets rid of unecessary spaces
+            for(int x = 0; x < SplitSequence.Count(); x ++) 
+            {
+                SplitSequence[x] = RemoveSpaces(SplitSequence[x]);
+                SplitSequence[x] = SplitSequence[x].ToUpper();
+            }
+
+            //manual set up of sequence
+            //chop sequence first
+            for (int i = 0; i < SplitSequence.Count() - 1; i++)
+            {
+                var choppedSequence = new List<string>();
+                choppedSequence.Add(SplitSequence[i]); choppedSequence.Add(SplitSequence[i + 1]);
+                FinalSequence.Add(BarBuilder(timesig, majmin, choppedSequence, keysig));
+
+            }
+
+            //for the last item do it seperately and reverse chopped sequence to make sure it doesn't add anything
+            var FinalchoppedSequence = new List<string>();
+            FinalchoppedSequence.Add(SplitSequence[3]); FinalchoppedSequence.Add(SplitSequence[2]);
+            FinalSequence.Add(BarBuilder(timesig, majmin, FinalchoppedSequence, keysig));
+
+            return FinalSequence;
+
+
+        }
+
         //Ths function is going to be used to build a bar of chords, the number of chords allowed in a bar depends on the time signiture and other parameters determine which chords are going to be played
         public List<List<string>> BarBuilder(string timesig, string majmin, List<string> ChoppedSequence, string keysig) 
         {
@@ -170,6 +203,7 @@ namespace Orpheus_MidiFileMaker
             
             for(int i = 0; i < chordsToUse.Count; i += 2) 
             {
+                //adds the final chords to a bar variable going through the bars two at a time
                 var FinalChord = ChordBuilder(keysig, majmin, chordsToUse[i], chordsToUse[i+1]);
                 bar.Add(FinalChord);
             }

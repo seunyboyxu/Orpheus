@@ -130,10 +130,8 @@ namespace Orpheus_MidiFileMaker
             expectedNotes.Add("II"); expectedNotes.Add("V");
             MyChordProcesses processes = new MyChordProcesses();
             processes.SetUpRules();
-            var BarBuildTester = processes.BarBuilder("4/4", "maj", expectedNotes, "A");
-            expectedNotes.Clear();
-            expectedNotes.Add("V"); expectedNotes.Add("I");
-            var BarBuilderTester2 = processes.BarBuilder("4/4", "maj", expectedNotes, "A");
+            MidiMaker midiMaker = new MidiMaker();
+            var SeqeunceBuildTester = processes.SequenceBuilder(midiMaker.commonChordSequences[5], "4/4", "min", "A");
 
             
         }
