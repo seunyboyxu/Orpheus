@@ -121,20 +121,16 @@ namespace Orpheus_MidiFileMaker
         
 
         public static void Main(string[] args)
-        {        
+        {
 
-            
-        
-        
-        
-        
         }
 
         public static void Generate(InputData UserData) 
         {
-            string path = "C:/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/MidiData.json";
+            string path = "C:/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/MidiDataTest.json";
             int bpm = UserData.GetBPM();
             string timesig = UserData.GetTimeSig();
+            int randomness = UserData.GetRandomness();
 
             //collects all the midifile objects found with specified data
             List<TheMidiFile> CollectedFiles = GetMidiFiles(path, bpm, timesig);
@@ -166,7 +162,12 @@ namespace Orpheus_MidiFileMaker
             var SeqeunceBuild = processes.SequenceBuilder(midiMaker.commonChordSequences[x], UserData.GetTimeSig(), UserData.GetMajMin(), UserData.GetKeySig());
 
             //Note generator function
+            NoteProcesses noteProcesses= new NoteProcesses();
+            var FinalPatterns = noteProcesses.PatternFlattener(CollectedFiles);
+
+            var PatternGen = noteProcesses.PatternGen(timesig, FinalPatterns);
             
+            var FinalNoteSequence = noteProcesses.NoteGen(PatternGen, allTop10Notes, randomness);
 
 
 
@@ -302,6 +303,7 @@ namespace Orpheus_MidiFileMaker
             MajMin = majMin;
 
         }
+        public int GetRandomness() { return Randomness; }
 
         public int GetBPM() 
         {

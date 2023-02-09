@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Orpheus_Analyser;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -118,9 +119,85 @@ namespace Orpheus_MidiFileMaker
             return nearestValue;
         }
 
-        public List<List<FinalNote>> NoteGen(List<List<double>> patternSeq, List<string> AllNotes) 
+        //generates the final note and pattern combinations
+        public List<List<FinalNote>> NoteGen(List<List<double>> patternSeq, List<string> AllNotes, int Randomness) 
         {
+            //final List
+            List<List<FinalNote>> Sequence = new List<List<FinalNote>>();
+
+            //find midpoint of List of notes
+            int midPoint = AllNotes.Count / 2;
+
+            //gets the total number of pattern notes in the list to iterate through and add a note
+            int total = patternSeq.Select(x => x.Count()).Sum();
+
+            //generate the list of notes
+            List<string> notes = new List<string>();
+
+            int index = midPoint;
+            Random random = new Random();
+            int direction = 1;
+            for(int i = 0; i < total; i++)
+            {
+                //choses jump range based on randomness
+                int jump = random.Next(0, Randomness + 1);
+                //makes sure the jump goes in the right direction
+                jump = jump * direction;
+                //adds the jump on to the index
+                index += jump;
+                //checks when index is higher than the AllNotes
+                if(index > AllNotes.Count()) 
+                {
+                    //resets to midpoint
+                    index = midPoint;
+                }
+                //adds the note at index to the AllNotes
+                notes.Add(AllNotes[index]);
+                //changes the direction at the end
+                if (direction == 1) { direction = -1; } else if (direction == -1) { direction = 1; }
+            }
+
+            //adds the pattern note and note name together in a final sequence, uses the pattern as an indicator
+            int noteIndicator = 0;
+            foreach(var bar in patternSeq) 
+            {
+                List<FinalNote> temp = new List<FinalNote>();
+                //goes through every bar
+                for(int i = 0; i < bar.Count;i++) 
+                {
+                    FinalNote finalNote = new FinalNote(notes[noteIndicator], bar[i]);
+                    temp.Add(finalNote);
+                    noteIndicator++;
+                }
+
+                Sequence.Add(temp);
+            }
+
+            return Sequence;
             
+        }
+
+        public List<double> PatternFlattener(List<TheMidiFile> files)
+        {
+            List<double> patternsCOMBO = new List<double>();
+            List<List<double>> collectedFile = new List<List<double>>();
+
+
+            foreach (var file in files)
+            {
+                //gets all the patterns from the collected files
+                collectedFile = file.GetPatterns();
+                //flattens the list into one large long double list
+                var temp = collectedFile.SelectMany(x => x).ToList();
+                //adds to the patternsCombo
+                foreach(var x in temp) 
+                {
+                    patternsCOMBO.Add(x);
+                }
+
+            }
+
+            return patternsCOMBO;
         }
 
     }
