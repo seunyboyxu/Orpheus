@@ -76,6 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FinalNote.cs" />
     <Compile Include="MyChordProcesses.cs" />
     <Compile Include="MidiMaker.cs" />
     <Compile Include="NoteProcesses.cs" />

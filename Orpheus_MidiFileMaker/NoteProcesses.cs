@@ -118,5 +118,10 @@ namespace Orpheus_MidiFileMaker
             return nearestValue;
         }
 
+        public List<List<FinalNote>> NoteGen(List<List<double>> patternSeq, List<string> AllNotes) 
+        {
+            
+        }
+
     }
 }

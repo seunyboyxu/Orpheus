@@ -132,7 +132,7 @@ namespace Orpheus_MidiFileMaker
 
         public static void Generate(InputData UserData) 
         {
-            string path = "C:/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/MidiDataTest.json";
+            string path = "C:/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/MidiData.json";
             int bpm = UserData.GetBPM();
             string timesig = UserData.GetTimeSig();
 
