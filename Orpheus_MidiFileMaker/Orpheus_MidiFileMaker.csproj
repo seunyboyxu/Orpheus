@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="MyChordProcesses.cs" />
     <Compile Include="MidiMaker.cs" />
+    <Compile Include="NoteProcesses.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

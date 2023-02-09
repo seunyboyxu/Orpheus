@@ -166,6 +166,8 @@ namespace Orpheus_MidiFileMaker
             var SeqeunceBuild = processes.SequenceBuilder(midiMaker.commonChordSequences[x], UserData.GetTimeSig(), UserData.GetMajMin(), UserData.GetKeySig());
 
             //Note generator function
+            
+
 
 
 
