@@ -19,7 +19,7 @@ namespace Orpheus
         {
             
             InitializeComponent();
-            RunAsync();
+            //RunAsync();
         }
 
         public void ProgressBarChanger()
@@ -53,10 +53,10 @@ namespace Orpheus
         private void BTN_Run_Click(object sender, EventArgs e)
         {
             RunAsync();
-            Thread.Sleep(10000);
-            FRM_MainPage mainPage = new FRM_MainPage();
-            mainPage.ShowDialog();
-            this.Close();
+            //Thread.Sleep(10000);
+            //FRM_MainPage mainPage = new FRM_MainPage();
+            //mainPage.ShowDialog();
+            //this.Close();
         }
 
         private void PGB_LoadMidiFiles_Click(object sender, EventArgs e)

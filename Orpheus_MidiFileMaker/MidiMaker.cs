@@ -121,19 +121,13 @@ namespace Orpheus_MidiFileMaker
         
 
         public static void Main(string[] args)
-        {
-            string[] excludedNotes = new string[0];
-            InputData data = new InputData("539472", excludedNotes, 120, "4/4", 5, "C", "maj");
-            //Generate(data);
-            //var tester = MyChordProcesses.ChordBuilder("B", "min", "VI", "major 7th");
-            List<string> expectedNotes = new List<string>();
-            expectedNotes.Add("II"); expectedNotes.Add("V");
-            MyChordProcesses processes = new MyChordProcesses();
-            processes.SetUpRules();
-            MidiMaker midiMaker = new MidiMaker();
-            var SeqeunceBuildTester = processes.SequenceBuilder(midiMaker.commonChordSequences[5], "4/4", "min", "A");
+        {        
 
             
+        
+        
+        
+        
         }
 
         public static void Generate(InputData UserData) 
@@ -164,11 +158,17 @@ namespace Orpheus_MidiFileMaker
             allTop10Notes.Sort();
             //now to deal with all the chords
             //chord generator function
-          
+            MyChordProcesses processes = new MyChordProcesses();
+            processes.SetUpRules();
+            MidiMaker midiMaker = new MidiMaker();
+            Random random = new Random();
+            int x = random.Next(midiMaker.commonChordSequences.Length);
+            var SeqeunceBuild = processes.SequenceBuilder(midiMaker.commonChordSequences[x], UserData.GetTimeSig(), UserData.GetMajMin(), UserData.GetKeySig());
+
             //Note generator function
 
 
-            
+
         }
       // static List<List<string>> ChordGenerator(string keysig, string majmin){}
       //public static List<string> NoteGenerator(string keysig, string majmin){}
