@@ -127,7 +127,7 @@ namespace Orpheus_MidiFileMaker
 
         public static void Generate(InputData UserData) 
         {
-            string path = "C:/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/MidiDataTest.json";
+            string path = "C:/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/MidiData.json";
             int bpm = UserData.GetBPM();
             string timesig = UserData.GetTimeSig();
             int randomness = UserData.GetRandomness();
@@ -144,7 +144,10 @@ namespace Orpheus_MidiFileMaker
             //randomness + keysig
             //we need top ten notes from all midi files
             List<string> allTop10Notes= new List<string>();
-            foreach(var midifile in CollectedFiles) { allTop10Notes.Concat(midifile.GetTop10Notes()).ToList(); }
+            foreach(var midifile in CollectedFiles) 
+            { 
+                allTop10Notes.Concat(midifile.GetTop10Notes()).ToList(); 
+            }
             //Get rid of excluded notes
             allTop10Notes.Except(notesExcludedString).ToList();
             //filter notes to get the ones in the relevant key signiture, need a function for this
@@ -165,7 +168,7 @@ namespace Orpheus_MidiFileMaker
             NoteProcesses noteProcesses= new NoteProcesses();
             var FinalPatterns = noteProcesses.PatternFlattener(CollectedFiles);
 
-            var PatternGen = noteProcesses.PatternGen(timesig, FinalPatterns);
+            var PatternGen = noteProcesses.PatternGen(timesig, FinalPatterns, PatternChooser);
             
             var FinalNoteSequence = noteProcesses.NoteGen(PatternGen, allTop10Notes, randomness);
 

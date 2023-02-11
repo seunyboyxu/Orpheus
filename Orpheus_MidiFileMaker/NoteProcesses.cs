@@ -16,7 +16,7 @@ namespace Orpheus_MidiFileMaker
         public NoteProcesses() { }
 
         //this first function is made to generate a list of patterns per bar, these patterns will always have to add up to a certain value
-        public List<List<double>> PatternGen(string timesig, List<double> patterns) 
+        public List<List<double>> PatternGen(string timesig, List<double> patterns, int PatternChooser) 
         {
             List<double> BarPattern= new List<double>();
             List<List<double>> PatternSequence = new List<List<double>>();
@@ -63,7 +63,12 @@ namespace Orpheus_MidiFileMaker
                     //adds the pattern from the pattern indicator to the bar
                     BarPattern.Add(patterns[PatternIndicator]);
                     //increment the Pattern indicator to the next one, since the previous pattern number has been used
-                    PatternIndicator++;
+                    //added to pattern chooser which is generated from pattern seed
+                    PatternIndicator += PatternChooser;
+                    if(patterns.Count() > PatternIndicator) 
+                    {
+                        PatternIndicator = patterns.Count() / 4;
+                    }
                 }
 
                 //last check to make sure the BarPattern fits the quota incase the last note added made it go over the quota
