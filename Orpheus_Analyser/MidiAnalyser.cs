@@ -67,9 +67,8 @@ namespace Orpheus_Analyser
 
         public static void LoadMidiFiles()
         {
-            var options = new JsonSerializerOptions 
+            var options = new JsonSerializerOptions  
             { 
-                WriteIndented = true,
                 AllowTrailingCommas = true
             };
             List<TheMidiFile> AllMidiFiles = new List<TheMidiFile>();
