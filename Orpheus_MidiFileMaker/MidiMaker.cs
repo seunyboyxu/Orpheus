@@ -127,7 +127,7 @@ namespace Orpheus_MidiFileMaker
 
         public static void Generate(InputData UserData) 
         {
-            string path = "C:/Users/seun_/source/repos/Orpheus/Orpheus/bin/Debug/MidiData.json";
+            string path = "C:/Users/seun_/source/repos/Orpheus/Orpheus/bin/Debug/MidiData";
             int bpm = UserData.GetBPM();
             string timesig = UserData.GetTimeSig();
             int randomness = UserData.GetRandomness();
@@ -146,7 +146,8 @@ namespace Orpheus_MidiFileMaker
             List<string> allTop10Notes= new List<string>();
             foreach(var midifile in CollectedFiles) 
             { 
-                allTop10Notes.Concat(midifile.GetTop10Notes()).ToList(); 
+                var temp = midifile.GetTop10Notes().ToList(); 
+                foreach(var y in temp) { allTop10Notes.Add(y); }
             }
             //Get rid of excluded notes
             allTop10Notes.Except(notesExcludedString).ToList();
@@ -212,14 +213,26 @@ namespace Orpheus_MidiFileMaker
             //Put it in a new list
             var options = new JsonSerializerOptions
             {
-                //AllowTrailingCommas = true
+                AllowTrailingCommas = true, 
+                WriteIndented = true
                 
                 
             };
 
-            string jsonContents = File.ReadAllText(path);
-            TheMidiFile[] AllFiles = JsonSerializer.Deserialize<TheMidiFile[]>(jsonContents, options);
-            var FinalList = AllFiles.Where(x => (int)x.GetBPM() == bpm && x.GetTimeSig() == timesig).ToList();
+            List<TheMidiFile> FinalList = new List<TheMidiFile>();
+
+            foreach (string file in Directory.EnumerateFiles(path, "*", SearchOption.AllDirectories)) 
+            {
+                string jsonContents = File.ReadAllText(file);
+                List<TheMidiFile> MidiDataFiles = JsonSerializer.Deserialize<List<TheMidiFile>>(jsonContents, options);
+                var temp = MidiDataFiles.Where(x => (int)x.GetBPM() == bpm && x.GetTimeSig() == timesig).ToList();
+                foreach(var x in temp) {FinalList.Add(x); }
+
+            }
+
+               
+            
+            
             return FinalList;
         }
 

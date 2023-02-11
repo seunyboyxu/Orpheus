@@ -65,7 +65,7 @@ namespace Orpheus_MidiFileMaker
                     //increment the Pattern indicator to the next one, since the previous pattern number has been used
                     //added to pattern chooser which is generated from pattern seed
                     PatternIndicator += PatternChooser;
-                    if(patterns.Count() > PatternIndicator) 
+                    if(PatternIndicator > patterns.Count())
                     {
                         PatternIndicator = patterns.Count() / 4;
                     }
