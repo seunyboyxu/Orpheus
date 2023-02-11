@@ -127,7 +127,7 @@ namespace Orpheus_MidiFileMaker
 
         public static void Generate(InputData UserData) 
         {
-            string path = "C:/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/MidiData.json";
+            string path = "C:/Users/seun_/source/repos/Orpheus/Orpheus/bin/Debug/MidiData.json";
             int bpm = UserData.GetBPM();
             string timesig = UserData.GetTimeSig();
             int randomness = UserData.GetRandomness();
@@ -212,13 +212,13 @@ namespace Orpheus_MidiFileMaker
             //Put it in a new list
             var options = new JsonSerializerOptions
             {
-                AllowTrailingCommas = true
+                //AllowTrailingCommas = true
                 
                 
             };
 
             string jsonContents = File.ReadAllText(path);
-            List<TheMidiFile> AllFiles = JsonSerializer.Deserialize<List<TheMidiFile>>(jsonContents, options);
+            TheMidiFile[] AllFiles = JsonSerializer.Deserialize<TheMidiFile[]>(jsonContents, options);
             var FinalList = AllFiles.Where(x => (int)x.GetBPM() == bpm && x.GetTimeSig() == timesig).ToList();
             return FinalList;
         }

@@ -69,20 +69,23 @@ namespace Orpheus_Analyser
         {
             var options = new JsonSerializerOptions  
             { 
-                AllowTrailingCommas = true
+                AllowTrailingCommas = true,
+                WriteIndented= true
             };
             List<TheMidiFile> AllMidiFiles = new List<TheMidiFile>();
             string path = "/Users/seun_/source/repos/Orpheus/Orpheus_Analyser/bin/Debug/midi file list";
             int count = 0;
             int offloader = 100;
+            int filenumber = 1;
             foreach (string file in Directory.EnumerateFiles(path, "*", SearchOption.AllDirectories))
             {
                 if (count == offloader)
                 {
                     string json = JsonSerializer.Serialize(AllMidiFiles, options);
-                    System.IO.File.AppendAllText("MidiData.json", json);
+                    System.IO.File.WriteAllText("/Users/seun_/source/repos/Orpheus/Orpheus/bin/Debug/MidiData/MidiData_" + filenumber + ".json", json);
                     AllMidiFiles.Clear();
                     count = 0;
+                    filenumber++;
                     Pause();
                     
 
@@ -99,8 +102,8 @@ namespace Orpheus_Analyser
                         tempMidiFile.SetTop10Notes(Analysis.GetTop10Notes(tempMidiFile.GetMidiFile()));
                         tempMidiFile.SetAllNotesUsed(Analysis.AllUsedNotes(tempMidiFile.GetMidiFile()));
                         tempMidiFile.SetPatterns(Analysis.PredictNoteDurations(tempMidiFile.GetMidiFile()));
-                        
-                        
+
+
                         AllMidiFiles.Add(tempMidiFile);
                     }
                     catch (Exception ex)
