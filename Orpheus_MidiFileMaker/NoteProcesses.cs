@@ -53,6 +53,7 @@ namespace Orpheus_MidiFileMaker
 
                 //indefinetly go through pattern list to fill up each bar
                 while (true)
+
                 {
                     //checks to see if the total patterns in the BarQuota have been filled
                     if(BarPattern.Sum() >= BarQuota)
@@ -67,7 +68,7 @@ namespace Orpheus_MidiFileMaker
                     PatternIndicator += PatternChooser;
                     if(PatternIndicator > patterns.Count())
                     {
-                        PatternIndicator = patterns.Count() / 4;
+                        PatternIndicator = patterns.Count() / 2;
                     }
                 }
 
@@ -149,12 +150,12 @@ namespace Orpheus_MidiFileMaker
                 //makes sure the jump goes in the right direction
                 jump = jump * direction;
                 //adds the jump on to the index
-                index += jump;
+                index = jump + index;
                 //checks when index is higher than the AllNotes
-                if(index > AllNotes.Count()) 
+                if(index >= AllNotes.Count() || index < 0) 
                 {
-                    //resets to midpoint
-                    index = midPoint;
+                    //resets to midpoint times a direction + a random place
+                    index = direction * (midPoint + random.Next(1, Randomness - 2));
                 }
                 //adds the note at index to the AllNotes
                 notes.Add(AllNotes[index]);

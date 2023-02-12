@@ -143,12 +143,30 @@ namespace Orpheus_MidiFileMaker
 
             //randomness + keysig
             //we need top ten notes from all midi files
-            List<string> allTop10Notes= new List<string>();
+            List<string> Top10Notes= new List<string>();
             foreach(var midifile in CollectedFiles) 
             { 
                 var temp = midifile.GetTop10Notes().ToList(); 
-                foreach(var y in temp) { allTop10Notes.Add(y); }
+                foreach(var y in temp) { Top10Notes.Add(y); }
             }
+
+            
+            //get rid of note numbers
+            List<string> allTop10Notes= new List<string>();
+            foreach (string s in Top10Notes)
+            {
+                int index = s.Length - 1;
+                while (index >= 0 && Char.IsDigit(s[index]))
+                {
+                    index--;
+                }
+                allTop10Notes.Add(s.Substring(0, index + 1));
+            }
+            //remove duplicates
+            HashSet<string> uniqueNames = new HashSet<string>(allTop10Notes);
+            allTop10Notes = uniqueNames.ToList();
+
+
             //Get rid of excluded notes
             allTop10Notes.Except(notesExcludedString).ToList();
             //filter notes to get the ones in the relevant key signiture, need a function for this
@@ -177,8 +195,6 @@ namespace Orpheus_MidiFileMaker
 
 
         }
-      // static List<List<string>> ChordGenerator(string keysig, string majmin){}
-      //public static List<string> NoteGenerator(string keysig, string majmin){}
 
         public List<string> FilterKeySig(List<string> notes, string keysig, string majmin) 
         {
