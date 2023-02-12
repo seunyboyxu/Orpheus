@@ -52,11 +52,11 @@ namespace Orpheus
 
         private void BTN_Run_Click(object sender, EventArgs e)
         {
-            RunAsync();
-            //Thread.Sleep(10000);
-            //FRM_MainPage mainPage = new FRM_MainPage();
-            //mainPage.ShowDialog();
-            //this.Close();
+            MidiAnalyser.LoadMidiFiles();
+            Console.WriteLine("Done");
+            FRM_MainPage mainPage = new FRM_MainPage();
+            mainPage.ShowDialog();
+            this.Close();
         }
 
         private void PGB_LoadMidiFiles_Click(object sender, EventArgs e)
