@@ -22,7 +22,7 @@ using System.Net.Http.Headers;
 using Melanchall.DryWetMidi.Multimedia;
 using System.Collections;
 using System.Numerics;
-
+using Melanchall.DryWetMidi.MusicTheory;
 
 namespace Orpheus_MidiFileMaker
 {
@@ -114,11 +114,26 @@ namespace Orpheus_MidiFileMaker
     "iii - Vi - ii - V"
 };
 
+        //dictionary of NoteDuration to MusicalNote Duration
+        public Dictionary<double, MusicalTimeSpan> NoteDurationConversion = new Dictionary<double, MusicalTimeSpan>();
+
+        List<double> DoubleValues = new List<double>()
+        {
+            1.0, 0.5, 0.25, 0.125, 0.0626, 0.03125, 0.015625
+        };
 
 
 
-
-        
+        public void SetDictionaries() 
+        {
+            NoteDurationConversion.Add(1.0, new MusicalTimeSpan(4, 4));
+            NoteDurationConversion.Add(0.5, new MusicalTimeSpan(2, 4));
+            NoteDurationConversion.Add(0.25, new MusicalTimeSpan(1, 4));
+            NoteDurationConversion.Add(0.125, new MusicalTimeSpan(1, 8));
+            NoteDurationConversion.Add(0.0626, new MusicalTimeSpan(1, 16));
+            NoteDurationConversion.Add(0.03125, new MusicalTimeSpan(1, 32));
+            NoteDurationConversion.Add(0.015625, new MusicalTimeSpan(1, 64));
+        } 
 
         public static void Main(string[] args)
         {
@@ -192,6 +207,50 @@ namespace Orpheus_MidiFileMaker
             var FinalNoteSequence = noteProcesses.NoteGen(PatternGen, allTop10Notes, randomness);
 
 
+
+
+        }
+
+        //this will be my final function to make a midi file from my generated data
+        public MidiFile MidiMaker100(List<List<FinalNote>> NoteSequence, List<List<List<string>>> ChordSequence, int bpm, string timesig)
+        {
+
+            // create an ITimeSpan starting at 0, to set everything
+            MetricTimeSpan timeLoc = new MetricTimeSpan(0, 0, 0);
+            //first create my midi file
+            MidiFile midifile = new MidiFile();
+
+            //create a tempo from my bpm parameter
+            var tempoMap = TempoMap.Create(Tempo.FromBeatsPerMinute(bpm));
+            midifile.ReplaceTempoMap(tempoMap);
+
+            //Create a timesigniture based on parameter
+            int numer = Convert.ToInt32(timesig.Substring(0));
+            int denom = Convert.ToInt32(timesig.Substring(2));
+            TimeSignature timeSignature = new TimeSignature(numer, denom);
+
+            //adds the timesig and bpm to the midi file
+            midifile.ManageTempoMap().SetTimeSignature(timeLoc, timeSignature);
+
+            //create a new track in the midi file for the notes as a chunk
+            TrackChunk NoteTrack = new TrackChunk();
+            midifile.Chunks.Add(NoteTrack);
+
+            BarBeatFractionTimeSpan bars = new BarBeatFractionTimeSpan(4, 4);
+
+            PatternBuilder patternBuilder = new PatternBuilder()
+                .Anchor()
+                ;
+
+
+            foreach (var bar in NoteSequence)
+            {
+                foreach (var note in bar)
+                {
+                    patternBuilder.Note(note.GetNoteName(), NoteDurationConversion[note.GetNoteDuration()]);
+
+                }
+            }
 
 
         }

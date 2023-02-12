@@ -155,7 +155,7 @@ namespace Orpheus_MidiFileMaker
                 if(index >= AllNotes.Count() || index < 0) 
                 {
                     //resets to midpoint times a direction + a random place
-                    index = direction * (midPoint + random.Next(1, Randomness - 2));
+                    index = (midPoint + (random.Next(1, 2) * direction));
                 }
                 //adds the note at index to the AllNotes
                 notes.Add(AllNotes[index]);
