@@ -11,7 +11,7 @@ namespace Orpheus_MidiFileMaker
     {
         List<double> SetDoubles = new List<double>()
         {
-            1.0, 0.5, 0.25, 0.125, 0.0626, 0.03125, 0.015625
+            1.0, 0.75, 0.5, 0.25, 0.125, 0.0626, 0.03125, 0.015625
         };
         public NoteProcesses() { }
 

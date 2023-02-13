@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Melanchall.DryWetMidi.Core;
 using Orpheus_MidiFileMaker;
 
 
@@ -56,7 +57,23 @@ namespace Orpheus
             
             
             InputData UserData = new InputData(patternseed, excludednotes, bpm, timesig , randomness, KeySig, KeySigMajMin);
-            Orpheus_MidiFileMaker.MidiMaker.Generate(UserData);
+            MidiFile file = Orpheus_MidiFileMaker.MidiMaker.Generate(UserData);
+
+            //save file dialog box
+            SaveFileDialog SFDBX = new SaveFileDialog();
+            SFDBX.Filter = "Midi Files (*.midi) | *.midi";
+            SFDBX.Title = "Save As";
+            if(SFDBX.ShowDialog() == DialogResult.OK) 
+            {
+                string location = SFDBX.FileName;
+
+                file.Write(location);
+
+            }
+
+           
+
+
             Console.WriteLine("done");
         }
 

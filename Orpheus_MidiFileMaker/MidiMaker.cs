@@ -22,7 +22,12 @@ using System.Net.Http.Headers;
 using Melanchall.DryWetMidi.Multimedia;
 using System.Collections;
 using System.Numerics;
+//using Melanchall.DryWetMidi.MusicTheory;
+using System.Diagnostics;
+//using Melanchall.DryWetMidi.MusicTheory;
 using Melanchall.DryWetMidi.MusicTheory;
+using Chord = Melanchall.DryWetMidi.MusicTheory.Chord;
+using Note = Melanchall.DryWetMidi.MusicTheory.Note;
 
 namespace Orpheus_MidiFileMaker
 {
@@ -119,7 +124,7 @@ namespace Orpheus_MidiFileMaker
 
         List<double> DoubleValues = new List<double>()
         {
-            1.0, 0.5, 0.25, 0.125, 0.0626, 0.03125, 0.015625
+            1.0, 0.75, 0.5, 0.25, 0.125, 0.0626, 0.03125, 0.015625
         };
 
 
@@ -129,6 +134,7 @@ namespace Orpheus_MidiFileMaker
             NoteDurationConversion.Add(1.0, new MusicalTimeSpan(4, 4));
             NoteDurationConversion.Add(0.5, new MusicalTimeSpan(2, 4));
             NoteDurationConversion.Add(0.25, new MusicalTimeSpan(1, 4));
+            NoteDurationConversion.Add(0.75, new MusicalTimeSpan(3, 4));
             NoteDurationConversion.Add(0.125, new MusicalTimeSpan(1, 8));
             NoteDurationConversion.Add(0.0626, new MusicalTimeSpan(1, 16));
             NoteDurationConversion.Add(0.03125, new MusicalTimeSpan(1, 32));
@@ -140,7 +146,7 @@ namespace Orpheus_MidiFileMaker
 
         }
 
-        public static void Generate(InputData UserData) 
+        public static MidiFile Generate(InputData UserData) 
         {
             string path = "C:/Users/seun_/source/repos/Orpheus/Orpheus/bin/Debug/MidiData";
             int bpm = UserData.GetBPM();
@@ -196,7 +202,7 @@ namespace Orpheus_MidiFileMaker
             MidiMaker midiMaker = new MidiMaker();
             Random random = new Random();
             int x = random.Next(midiMaker.commonChordSequences.Length);
-            var SeqeunceBuild = processes.SequenceBuilder(midiMaker.commonChordSequences[x], UserData.GetTimeSig(), UserData.GetMajMin(), UserData.GetKeySig());
+            var FinalChordSequence = processes.SequenceBuilder(midiMaker.commonChordSequences[x], UserData.GetTimeSig(), UserData.GetMajMin(), UserData.GetKeySig());
 
             //Note generator function
             NoteProcesses noteProcesses= new NoteProcesses();
@@ -206,6 +212,8 @@ namespace Orpheus_MidiFileMaker
             
             var FinalNoteSequence = noteProcesses.NoteGen(PatternGen, allTop10Notes, randomness);
 
+            return midiMaker.MidiMaker100(FinalNoteSequence, FinalChordSequence, bpm, timesig);
+
 
 
 
@@ -214,44 +222,108 @@ namespace Orpheus_MidiFileMaker
         //this will be my final function to make a midi file from my generated data
         public MidiFile MidiMaker100(List<List<FinalNote>> NoteSequence, List<List<List<string>>> ChordSequence, int bpm, string timesig)
         {
+            //sets the dicitonaries ready
+            MidiMaker maker = new MidiMaker();
+            maker.SetDictionaries();
 
             // create an ITimeSpan starting at 0, to set everything
             MetricTimeSpan timeLoc = new MetricTimeSpan(0, 0, 0);
             //first create my midi file
-            MidiFile midifile = new MidiFile();
+            
 
             //create a tempo from my bpm parameter
-            var tempoMap = TempoMap.Create(Tempo.FromBeatsPerMinute(bpm));
-            midifile.ReplaceTempoMap(tempoMap);
 
             //Create a timesigniture based on parameter
-            int numer = Convert.ToInt32(timesig.Substring(0));
-            int denom = Convert.ToInt32(timesig.Substring(2));
+            int numer = Convert.ToInt32(timesig.Substring(0, 1));
+            int denom = Convert.ToInt32(timesig.Substring(2, 1));
             TimeSignature timeSignature = new TimeSignature(numer, denom);
 
-            //adds the timesig and bpm to the midi file
-            midifile.ManageTempoMap().SetTimeSignature(timeLoc, timeSignature);
 
-            //create a new track in the midi file for the notes as a chunk
-            TrackChunk NoteTrack = new TrackChunk();
-            midifile.Chunks.Add(NoteTrack);
+            //sets a defualt octave
+            var octave = 4;
 
-            BarBeatFractionTimeSpan bars = new BarBeatFractionTimeSpan(4, 4);
+            //builds the notes into a pattern builder for my midi file
+            var patternBuilder = new PatternBuilder();
 
-            PatternBuilder patternBuilder = new PatternBuilder()
-                .Anchor()
-                ;
-
-
-            foreach (var bar in NoteSequence)
+            foreach (var barNotes in NoteSequence)
             {
-                foreach (var note in bar)
+                foreach (var note in barNotes)
                 {
-                    patternBuilder.Note(note.GetNoteName(), NoteDurationConversion[note.GetNoteDuration()]);
-
+                    patternBuilder.Note(($"{note.GetNoteName()}{octave}"), maker.NoteDurationConversion[note.GetNoteDuration()]);
                 }
             }
 
+            var tempo = Tempo.FromBeatsPerMinute(bpm);
+            var tempoMap = TempoMap.Create(tempo, timeSignature);
+
+            var notePatternFinal = patternBuilder.Build().ToTrackChunk(tempoMap);
+            //now i need to make the chord track
+
+            var ChordPatternBuilder = new PatternBuilder();
+
+            //creates chord times 
+            MusicalTimeSpan ChordMusicalTime1 = new MusicalTimeSpan();
+            MusicalTimeSpan ChordMusicalTime2 = new MusicalTimeSpan();
+
+            //goes through every bar in the sequence
+            foreach (var barChords in ChordSequence) 
+            {
+                int count = 1;
+                //goes through every chord in the bar
+                foreach(var chord in barChords) 
+                {
+                    //checks if the bar has two chords or one
+                    if(barChords.Count() == 2) 
+                    {
+                        //if it has two chords in the bar, checks if it is 4/4, 3/4 or 2/4 to determine beat length
+                        if(timesig == "4/4") 
+                        {
+                            ChordMusicalTime1 = new MusicalTimeSpan(2, 4);
+                            ChordMusicalTime2 = new MusicalTimeSpan(2, 4);
+                            
+                        }else if(timesig == "3/4") 
+                        {
+                            ChordMusicalTime1 = new MusicalTimeSpan(2, 4);
+                            ChordMusicalTime2 = new MusicalTimeSpan(1, 4);
+                            
+                        }else if(timesig == "2/4") 
+                        {
+                            ChordMusicalTime1 = new MusicalTimeSpan(1, 4);
+                            ChordMusicalTime2 = new MusicalTimeSpan(1, 4);
+                        }
+                    }
+                    //if it has one chord in the bar, takes the first substring of the timesig and adds it to the chord note length
+                    else if(barChords.Count() == 1) 
+                    {
+                        ChordMusicalTime1 = new MusicalTimeSpan(numer, 4);
+                    }
+
+                    ICollection<NoteName> CollectionChords = new List<NoteName>();
+                    
+
+                    foreach(var ChordNote in chord) 
+                    {
+                        //string note = Convert.ToString(Analysis.ConvertLetterToMidiNote(ChordNote));
+                        //SevenBitNumber noteNum = SevenBitNumber.Parse(note);
+                        Note note1 = Note.Parse($"{ChordNote}{octave}");
+                        CollectionChords.Add(note1.NoteName);
+                    }
+                    Chord Finalchord = new Chord(CollectionChords);
+                    
+                    if(count == 1) { ChordPatternBuilder.Chord(Finalchord, ChordMusicalTime1); }
+                    else if(count == 2) { ChordPatternBuilder.Chord(Finalchord, ChordMusicalTime2); }
+                    
+
+
+                    count ++;
+                }
+            }
+
+            var ChordPatternFinal = ChordPatternBuilder.Build().ToTrackChunk(tempoMap);
+
+            MidiFile midifile = new MidiFile(notePatternFinal, ChordPatternFinal);
+
+            return midifile;
 
         }
 

@@ -108,7 +108,7 @@
             this.PCBX_BPM.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.PCBX_BPM.Image = global::Orpheus.Properties.Resources.BPM;
             this.PCBX_BPM.InitialImage = null;
-            this.PCBX_BPM.Location = new System.Drawing.Point(996, 207);
+            this.PCBX_BPM.Location = new System.Drawing.Point(984, 207);
             this.PCBX_BPM.Margin = new System.Windows.Forms.Padding(0);
             this.PCBX_BPM.Name = "PCBX_BPM";
             this.PCBX_BPM.Size = new System.Drawing.Size(145, 50);
@@ -242,7 +242,7 @@
             // 
             this.TXT_Randomness.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TXT_Randomness.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TXT_Randomness.Location = new System.Drawing.Point(522, 541);
+            this.TXT_Randomness.Location = new System.Drawing.Point(546, 541);
             this.TXT_Randomness.Maximum = new decimal(new int[] {
             10,
             0,
@@ -287,7 +287,7 @@
             this.BTN_LoadMidiFiles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BTN_LoadMidiFiles.FlatAppearance.BorderSize = 0;
             this.BTN_LoadMidiFiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTN_LoadMidiFiles.Location = new System.Drawing.Point(532, 9);
+            this.BTN_LoadMidiFiles.Location = new System.Drawing.Point(477, 9);
             this.BTN_LoadMidiFiles.Name = "BTN_LoadMidiFiles";
             this.BTN_LoadMidiFiles.Size = new System.Drawing.Size(240, 93);
             this.BTN_LoadMidiFiles.TabIndex = 16;
@@ -323,7 +323,7 @@
             "A",
             "A#",
             "B"});
-            this.CMBX_KeySigniture.Location = new System.Drawing.Point(482, 282);
+            this.CMBX_KeySigniture.Location = new System.Drawing.Point(504, 282);
             this.CMBX_KeySigniture.Name = "CMBX_KeySigniture";
             this.CMBX_KeySigniture.Size = new System.Drawing.Size(147, 33);
             this.CMBX_KeySigniture.TabIndex = 18;
@@ -335,7 +335,7 @@
             this.CMBX_MajMin.Items.AddRange(new object[] {
             "maj",
             "min"});
-            this.CMBX_MajMin.Location = new System.Drawing.Point(645, 282);
+            this.CMBX_MajMin.Location = new System.Drawing.Point(684, 282);
             this.CMBX_MajMin.Name = "CMBX_MajMin";
             this.CMBX_MajMin.Size = new System.Drawing.Size(72, 33);
             this.CMBX_MajMin.TabIndex = 19;
