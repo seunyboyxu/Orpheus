@@ -23,7 +23,7 @@ namespace Orpheus
 
         private void FRM_SplashScreen_Load(object sender, EventArgs e)
         {
-            timeLeft = 50;
+            timeLeft = 66;
             timer1.Start();
         }
 
