@@ -287,7 +287,7 @@
             this.BTN_LoadMidiFiles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BTN_LoadMidiFiles.FlatAppearance.BorderSize = 0;
             this.BTN_LoadMidiFiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTN_LoadMidiFiles.Location = new System.Drawing.Point(477, 9);
+            this.BTN_LoadMidiFiles.Location = new System.Drawing.Point(908, 9);
             this.BTN_LoadMidiFiles.Name = "BTN_LoadMidiFiles";
             this.BTN_LoadMidiFiles.Size = new System.Drawing.Size(240, 93);
             this.BTN_LoadMidiFiles.TabIndex = 16;

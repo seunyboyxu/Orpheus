@@ -19,7 +19,7 @@ namespace Orpheus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FRM_MainPage());
+            Application.Run(new FRM_SplashScreen());
         }
 
 

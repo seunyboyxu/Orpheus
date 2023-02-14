@@ -298,9 +298,10 @@ namespace Orpheus_MidiFileMaker
                         ChordMusicalTime1 = new MusicalTimeSpan(numer, 4);
                     }
 
+                    //creates a new chord collection
                     ICollection<NoteName> CollectionChords = new List<NoteName>();
                     
-
+                    //iterates through every chord note and adds it to the collection
                     foreach(var ChordNote in chord) 
                     {
                         //string note = Convert.ToString(Analysis.ConvertLetterToMidiNote(ChordNote));
@@ -308,8 +309,10 @@ namespace Orpheus_MidiFileMaker
                         Note note1 = Note.Parse($"{ChordNote}{octave}");
                         CollectionChords.Add(note1.NoteName);
                     }
+                    //adds the chord colleciton to the final chords
                     Chord Finalchord = new Chord(CollectionChords);
-                    
+
+                    //adds teh hords to the chord builder
                     if(count == 1) { ChordPatternBuilder.Chord(Finalchord, ChordMusicalTime1); }
                     else if(count == 2) { ChordPatternBuilder.Chord(Finalchord, ChordMusicalTime2); }
                     

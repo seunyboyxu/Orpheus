@@ -91,6 +91,12 @@
     <Compile Include="FRM_SettingsPage.Designer.cs">
       <DependentUpon>FRM_SettingsPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Orpheus_SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Orpheus_SplashScreen.Designer.cs">
+      <DependentUpon>Orpheus_SplashScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FRM_LoadMidiFiles.resx">
@@ -101,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_SettingsPage.resx">
       <DependentUpon>FRM_SettingsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Orpheus_SplashScreen.resx">
+      <DependentUpon>Orpheus_SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -26,8 +26,6 @@ namespace Orpheus
             //PCBX_ExcludedNotes.Parent = PCBX_Background;
             //PCBX_PatternSeed.Parent = PCBX_Background;
             //BTN_LoadMidiFiles.Parent = PCBX_Background;
-            //BTN_Settings.Parent = PCBX_Background;
-            //PNL_MainMenuItems.Parent = PCBX_Background;
         }
 
         private void TXBX_PatternSeed_TextChanged(object sender, EventArgs e)
