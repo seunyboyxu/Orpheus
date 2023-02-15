@@ -3,6 +3,9 @@
 ###############################################################################
 * text=auto
 
+# Set all files to have LF line endings
+* text eol=lf
+
 ###############################################################################
 # Set default behavior for command prompt diff.
 #
