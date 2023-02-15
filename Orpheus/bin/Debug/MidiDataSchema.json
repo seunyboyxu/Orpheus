@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TheMidiFile",
+  "type": "object",
+  "properties": {
+    "filename": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "bpm": {
+      "type": "number",
+      "minimum": 0
+    },
+    "TimeSig": {
+      "type": "string"
+    },
+    "Top10Notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "AllNotesUsed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "patterns": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    }
+  },
+  "required": [
+    "filename",
+    "location",
+    "bpm",
+    "TimeSig",
+    "Top10Notes",
+    "AllNotesUsed",
+    "patterns"
+  ]
+}
