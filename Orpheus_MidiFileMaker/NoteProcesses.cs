@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,13 +12,14 @@ namespace Orpheus_MidiFileMaker
     {
         List<double> SetDoubles = new List<double>()
         {
-            1.0, 0.75, 0.5, 0.25, 0.125, 0.0626, 0.03125, 0.015625
+            1.0, 0.75, 0.5, 0.25, 0.375, 0.1875, 0.125, 0.0625, 0.03125, 0.015625
         };
         public NoteProcesses() { }
 
         //this first function is made to generate a list of patterns per bar, these patterns will always have to add up to a certain value
         public List<List<double>> PatternGen(string timesig, List<double> patterns, int PatternChooser) 
         {
+            Random random = new Random();   
             List<double> BarPattern= new List<double>();
             List<List<double>> PatternSequence = new List<List<double>>();
 
@@ -28,6 +30,9 @@ namespace Orpheus_MidiFileMaker
             {
                 patterns[i] = GetNearestValue(patterns[i], SetDoubles);
             }
+            //removing all values of one
+            patterns = patterns.Where(x => x != 1.0).ToList();
+
 
             //calculate the max beats in a bar
             double BarQuota = 0;
@@ -65,10 +70,10 @@ namespace Orpheus_MidiFileMaker
                     BarPattern.Add(patterns[PatternIndicator]);
                     //increment the Pattern indicator to the next one, since the previous pattern number has been used
                     //added to pattern chooser which is generated from pattern seed
-                    PatternIndicator += PatternChooser;
-                    if(PatternIndicator > patterns.Count())
+                    PatternIndicator += (PatternChooser * PatternChooser);
+                    if(PatternIndicator > patterns.Count() || PatternIndicator < 0)
                     {
-                        PatternIndicator = patterns.Count() / 2;
+                        PatternIndicator = patterns.Count() / random.Next(2, 8);
                     }
                 }
 
@@ -155,7 +160,7 @@ namespace Orpheus_MidiFileMaker
                 if(index >= AllNotes.Count() || index < 0) 
                 {
                     //resets to midpoint times a direction + a random place
-                    index = (midPoint + (random.Next(1, 2) * direction));
+                    index = (midPoint + (random.Next(0, 2) * direction));
                 }
                 //adds the note at index to the AllNotes
                 notes.Add(AllNotes[index]);

@@ -124,7 +124,7 @@ namespace Orpheus_MidiFileMaker
 
         List<double> DoubleValues = new List<double>()
         {
-            1.0, 0.75, 0.5, 0.25, 0.125, 0.0626, 0.03125, 0.015625
+            1.0, 0.75, 0.5, 0.25, 0.375, 0.1875, 0.125, 0.0625, 0.03125, 0.015625
         };
 
 
@@ -136,9 +136,14 @@ namespace Orpheus_MidiFileMaker
             NoteDurationConversion.Add(0.25, new MusicalTimeSpan(1, 4));
             NoteDurationConversion.Add(0.75, new MusicalTimeSpan(3, 4));
             NoteDurationConversion.Add(0.125, new MusicalTimeSpan(1, 8));
-            NoteDurationConversion.Add(0.0626, new MusicalTimeSpan(1, 16));
+            NoteDurationConversion.Add(0.0625, new MusicalTimeSpan(1, 16));
+            //NoteDurationConversion.Add(0.4375, new MusicalTimeSpan(7, 16));
             NoteDurationConversion.Add(0.03125, new MusicalTimeSpan(1, 32));
             NoteDurationConversion.Add(0.015625, new MusicalTimeSpan(1, 64));
+
+            //dotted notes
+            NoteDurationConversion.Add(0.375, new MusicalTimeSpan(3, 8));
+            NoteDurationConversion.Add(0.1875, new MusicalTimeSpan(3, 16));
         } 
 
         public static void Main(string[] args)
