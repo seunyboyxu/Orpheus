@@ -195,9 +195,10 @@ namespace Orpheus_Analyser
 
         }
 
-        //This is the function I am making to retrieve the time signiture from a midi file
         public static string GetTimeSig(MidiFile midifile)
         {
+            //This is the function I am making to retrieve the time signiture from a midi file
+
             //Firstly i need to create a tempomap variable of the midi file
             TempoMap fileTImedata = midifile.GetTempoMap();
             //I will then create a new metric timespan variable.
@@ -387,41 +388,6 @@ namespace Orpheus_Analyser
 
 
             return NMNotes.ToList();
-        }
-
-        public static List<string> GetAllCHords(MidiFile file) 
-        {
-            IEnumerable<TrackChunk> chunks = file.GetTrackChunks();
-
-            ICollection<Chord> chords = new List<Chord>();
-
-            List<string> AllChords = new List<string>();
-
-            foreach(var chunk in chunks) 
-            {
-                chords = chunk.GetChords();
-
-                var temp = chords.ToList();
-
-                foreach(var chord in temp) 
-                {
-                    AllChords.Add(chord.ToString());
-                }
-
-                
-
-
-            }
-
-            //Filter chords to only have 3 letters
-            string pattern = "^[A-G][0-9] [A-G][0-9] [A-G][0-9]$";
-            AllChords = AllChords.Where(s => Regex.IsMatch(s, pattern)).ToList();
-            //get rid of chord duplicates
-            AllChords = AllChords.Distinct().ToList();
-
-
-
-            return AllChords;
         }
 
         public static List<string> AllUsedNotes(MidiFile midifile)
