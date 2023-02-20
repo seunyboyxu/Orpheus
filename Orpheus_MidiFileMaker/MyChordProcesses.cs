@@ -13,9 +13,9 @@ using Orpheus_MidiFileMaker;
 
 namespace Orpheus_MidiFileMaker
 {
-    //this class is to hold the start and endvalue of two chords into one object to allow to check through my list of sequences and compare with my rules
     public class ChordStep
     {
+        //this class is to hold the start and endvalue of two chords into one object to allow to check through my list of sequences and compare with my rules
         private string startChord;
         private string endChord;
 
@@ -288,58 +288,7 @@ namespace Orpheus_MidiFileMaker
             return ChordsToUse;
         }
         
-        public static List<string> ChordBuilderTRY1(string keysig, string majmin, string chordSymbol, string chordType) 
-        {
-            MidiMaker midiMaker = new MidiMaker();
-            var chord = new List<string>();
-            int scalePosition = 0;
-            int KeySigScaleIndex = 0;
-            //switch statement to choose between major or minor scales
-            switch (majmin) 
-            {
-                case "maj":
-                    //gets the root note position of the chord symbol and the scale position
-                    scalePosition = ChordSymbolToNumber(chordSymbol);
-                    //gets the index of the key signiture to use on the scales
-                    //find the original C signiture scale to find the new one
-                    int KeySigScaleOriginalIndex = Array.IndexOf(midiMaker.notesMaj, keysig.ToUpper());
-                    //put the orignal index, with the scale position to find the key sig scale index of the new scale
-                    KeySigScaleIndex = Array.IndexOf(midiMaker.notesMaj, midiMaker.notesMajScales[KeySigScaleOriginalIndex][scalePosition]);
-                    //KeySigScaleIndex = midiMaker.notesMaj[scalePosition];
-
-                    //use chordtype to determine which chord is going to be played. 
-                    //add the chordtype list, adds the common chords array based on the chord type
-                    string[] chordBuildMaj = midiMaker.CommonChords[Array.IndexOf(midiMaker.CommonChordNames, chordType)]; 
-                    //iterate through the array and changed the chordbuild notes to acutal notes
-                    //options: 1, 3, 5, 6, 7, b3, b5, #5, b7
-                    //use notesMaj as general note chooser from 0 to 10
-                    foreach(string notenum in chordBuildMaj) 
-                    {
-                        chord.Add(NoteNumberToNoteLetter(notenum, KeySigScaleIndex, majmin));
-                    }
-
-
-                    break;
-                case "min":
-                    scalePosition = ChordSymbolToNumber(chordSymbol);
-                    int KeySigScaleOriginalIndexMin = Array.IndexOf(midiMaker.notesMin, keysig.ToUpper());
-                    KeySigScaleIndex = Array.IndexOf(midiMaker.notesMin, midiMaker.notesMinScales[KeySigScaleOriginalIndexMin][scalePosition]);
-                    string[] chordBuildMin = midiMaker.CommonChords[Array.IndexOf(midiMaker.CommonChordNames, chordType)];
-                    foreach (string notenum in chordBuildMin)
-                    {
-                        chord.Add(NoteNumberToNoteLetter(notenum, KeySigScaleIndex, majmin));
-                    }
-
-
-                    break;
-                default: 
-                    break;
-
-            }
-            return chord;
-
-        }
-
+       
         //function to determine the root note from chord symbols
 
         public static int ChordSymbolToNumber(string s) 
@@ -633,6 +582,59 @@ namespace Orpheus_MidiFileMaker
             return chosenNoteSTR;
             
         }
+
+        public static List<string> ChordBuilderTRY1(string keysig, string majmin, string chordSymbol, string chordType)
+        {
+            MidiMaker midiMaker = new MidiMaker();
+            var chord = new List<string>();
+            int scalePosition = 0;
+            int KeySigScaleIndex = 0;
+            //switch statement to choose between major or minor scales
+            switch (majmin)
+            {
+                case "maj":
+                    //gets the root note position of the chord symbol and the scale position
+                    scalePosition = ChordSymbolToNumber(chordSymbol);
+                    //gets the index of the key signiture to use on the scales
+                    //find the original C signiture scale to find the new one
+                    int KeySigScaleOriginalIndex = Array.IndexOf(midiMaker.notesMaj, keysig.ToUpper());
+                    //put the orignal index, with the scale position to find the key sig scale index of the new scale
+                    KeySigScaleIndex = Array.IndexOf(midiMaker.notesMaj, midiMaker.notesMajScales[KeySigScaleOriginalIndex][scalePosition]);
+                    //KeySigScaleIndex = midiMaker.notesMaj[scalePosition];
+
+                    //use chordtype to determine which chord is going to be played. 
+                    //add the chordtype list, adds the common chords array based on the chord type
+                    string[] chordBuildMaj = midiMaker.CommonChords[Array.IndexOf(midiMaker.CommonChordNames, chordType)];
+                    //iterate through the array and changed the chordbuild notes to acutal notes
+                    //options: 1, 3, 5, 6, 7, b3, b5, #5, b7
+                    //use notesMaj as general note chooser from 0 to 10
+                    foreach (string notenum in chordBuildMaj)
+                    {
+                        chord.Add(NoteNumberToNoteLetter(notenum, KeySigScaleIndex, majmin));
+                    }
+
+
+                    break;
+                case "min":
+                    scalePosition = ChordSymbolToNumber(chordSymbol);
+                    int KeySigScaleOriginalIndexMin = Array.IndexOf(midiMaker.notesMin, keysig.ToUpper());
+                    KeySigScaleIndex = Array.IndexOf(midiMaker.notesMin, midiMaker.notesMinScales[KeySigScaleOriginalIndexMin][scalePosition]);
+                    string[] chordBuildMin = midiMaker.CommonChords[Array.IndexOf(midiMaker.CommonChordNames, chordType)];
+                    foreach (string notenum in chordBuildMin)
+                    {
+                        chord.Add(NoteNumberToNoteLetter(notenum, KeySigScaleIndex, majmin));
+                    }
+
+
+                    break;
+                default:
+                    break;
+
+            }
+            return chord;
+
+        }
+
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     }
 }

@@ -174,7 +174,6 @@ namespace Orpheus_Analyser
     {
         public static List<string> errors = new List<string>();
         public Analysis() { }
-
         public static double GetBPM(MidiFile midifile)
         {
             // Firstly a tempo map of the file is created, this gets all the time data from the midifile. 
@@ -608,8 +607,6 @@ namespace Orpheus_Analyser
             return predictedDurations;
 
         }
-
-
 
     }
 
