@@ -52,27 +52,40 @@ namespace Orpheus
             int randomness = (int)TXT_Randomness.Value;
             string timesig = CMBX_TimeSig.Text;
 
-            
-            
-            InputData UserData = new InputData(patternseed, excludednotes, bpm, timesig , randomness, KeySig, KeySigMajMin);
-            MidiFile file = Orpheus_MidiFileMaker.MidiMaker.Generate(UserData);
-
-            //save file dialog box
-            SaveFileDialog SFDBX = new SaveFileDialog();
-            SFDBX.Filter = "Midi Files (*.midi) | *.midi";
-            SFDBX.Title = "Save As";
-            if(SFDBX.ShowDialog() == DialogResult.OK) 
+            if (patternseed == "" || KeySig == "" || KeySigMajMin == "" || timesig == "") 
             {
-                string location = SFDBX.FileName;
-
-                file.Write(location);
-
+                MessageBox.Show("Please fill in all the boxes");
             }
+            else 
+            {
+                InputData UserData = new InputData(patternseed, excludednotes, bpm, timesig, randomness, KeySig, KeySigMajMin);
+                MidiFile file = Orpheus_MidiFileMaker.MidiMaker.Generate(UserData);
 
+                //save file dialog box
+                SaveFileDialog SFDBX = new SaveFileDialog();
+                SFDBX.Filter = "Midi Files (*.midi) | *.midi";
+                SFDBX.Title = "Save As";
+                if (SFDBX.ShowDialog() == DialogResult.OK)
+                {
+                    string location = SFDBX.FileName;
+
+                    try
+                    {
+                        file.Write(location);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+
+
+
+
+                MessageBox.Show("Done");
+            }
+            
            
-
-
-            Console.WriteLine("done");
         }
 
         private void BTN_Title_Click(object sender, EventArgs e)

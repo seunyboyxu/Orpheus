@@ -124,7 +124,7 @@ namespace Orpheus_MidiFileMaker
 
         List<double> DoubleValues = new List<double>()
         {
-            1.0, 0.75, 0.5, 0.25, 0.375, 0.1875, 0.125, 0.0625, 0.03125, 0.015625
+            1.0, 0.75, 0.5, 0.25, 0.375, 0.3125, 0.1875, 0.125, 0.0625, 0.03125, 0.015625
         };
 
 
@@ -144,6 +144,7 @@ namespace Orpheus_MidiFileMaker
             //dotted notes
             NoteDurationConversion.Add(0.375, new MusicalTimeSpan(3, 8));
             NoteDurationConversion.Add(0.1875, new MusicalTimeSpan(3, 16));
+            NoteDurationConversion.Add(0.3125, new MusicalTimeSpan(5, 16));
         } 
 
         public static void Main(string[] args)
@@ -463,11 +464,11 @@ namespace Orpheus_MidiFileMaker
         private string KeySig;
         private string MajMin;
 
-        public InputData(string patternSeed, string[] excludedNotes, int bpm, string timeSig, int randomness, string keySig, string majMin)
+        public InputData(string patternSeed, string[] excludedNotes, int Bpm, string timeSig, int randomness, string keySig, string majMin)
         {
             PatternSeed = patternSeed;
             ExcludedNotes = excludedNotes;
-            this.bpm = bpm;
+            bpm = Bpm;
             TimeSig = timeSig;
             Randomness = randomness;
             KeySig = keySig;
