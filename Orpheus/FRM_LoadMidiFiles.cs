@@ -28,15 +28,8 @@ namespace Orpheus
             while (PGB_LoadMidiFiles.Value != PGB_LoadMidiFiles.Maximum)
             {
                 
-                PGB_LoadMidiFiles.Value = Orpheus_Analyser.MidiAnalyser.ProgressTracker;
-
-                
+                PGB_LoadMidiFiles.Value = Orpheus_Analyser.MidiAnalyser.ProgressTracker;                
             }
-
-
-
-
-
         }
 
         public void RunAsync()
