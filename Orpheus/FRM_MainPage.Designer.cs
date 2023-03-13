@@ -62,9 +62,10 @@
             // 
             this.PCBX_PatternSeed.BackColor = System.Drawing.Color.Transparent;
             this.PCBX_PatternSeed.Image = global::Orpheus.Properties.Resources.Pattern_Seed;
-            this.PCBX_PatternSeed.Location = new System.Drawing.Point(26, 485);
+            this.PCBX_PatternSeed.Location = new System.Drawing.Point(35, 597);
+            this.PCBX_PatternSeed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PCBX_PatternSeed.Name = "PCBX_PatternSeed";
-            this.PCBX_PatternSeed.Size = new System.Drawing.Size(322, 44);
+            this.PCBX_PatternSeed.Size = new System.Drawing.Size(429, 54);
             this.PCBX_PatternSeed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PCBX_PatternSeed.TabIndex = 7;
             this.PCBX_PatternSeed.TabStop = false;
@@ -73,9 +74,10 @@
             // 
             this.PCBX_ExcludedNotes.BackColor = System.Drawing.Color.Transparent;
             this.PCBX_ExcludedNotes.Image = global::Orpheus.Properties.Resources.Excluded_Notes;
-            this.PCBX_ExcludedNotes.Location = new System.Drawing.Point(26, 207);
+            this.PCBX_ExcludedNotes.Location = new System.Drawing.Point(35, 255);
+            this.PCBX_ExcludedNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PCBX_ExcludedNotes.Name = "PCBX_ExcludedNotes";
-            this.PCBX_ExcludedNotes.Size = new System.Drawing.Size(342, 40);
+            this.PCBX_ExcludedNotes.Size = new System.Drawing.Size(456, 49);
             this.PCBX_ExcludedNotes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PCBX_ExcludedNotes.TabIndex = 6;
             this.PCBX_ExcludedNotes.TabStop = false;
@@ -84,9 +86,10 @@
             // 
             this.PCBX_Randomness.BackColor = System.Drawing.Color.Transparent;
             this.PCBX_Randomness.Image = global::Orpheus.Properties.Resources.Randomness;
-            this.PCBX_Randomness.Location = new System.Drawing.Point(424, 485);
+            this.PCBX_Randomness.Location = new System.Drawing.Point(565, 597);
+            this.PCBX_Randomness.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PCBX_Randomness.Name = "PCBX_Randomness";
-            this.PCBX_Randomness.Size = new System.Drawing.Size(332, 44);
+            this.PCBX_Randomness.Size = new System.Drawing.Size(443, 54);
             this.PCBX_Randomness.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PCBX_Randomness.TabIndex = 5;
             this.PCBX_Randomness.TabStop = false;
@@ -95,9 +98,10 @@
             // 
             this.PCBX_TimeSig.BackColor = System.Drawing.Color.Transparent;
             this.PCBX_TimeSig.Image = global::Orpheus.Properties.Resources.Time_Signiture;
-            this.PCBX_TimeSig.Location = new System.Drawing.Point(850, 485);
+            this.PCBX_TimeSig.Location = new System.Drawing.Point(1133, 597);
+            this.PCBX_TimeSig.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PCBX_TimeSig.Name = "PCBX_TimeSig";
-            this.PCBX_TimeSig.Size = new System.Drawing.Size(344, 44);
+            this.PCBX_TimeSig.Size = new System.Drawing.Size(459, 54);
             this.PCBX_TimeSig.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PCBX_TimeSig.TabIndex = 4;
             this.PCBX_TimeSig.TabStop = false;
@@ -108,10 +112,10 @@
             this.PCBX_BPM.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.PCBX_BPM.Image = global::Orpheus.Properties.Resources.BPM;
             this.PCBX_BPM.InitialImage = null;
-            this.PCBX_BPM.Location = new System.Drawing.Point(984, 207);
+            this.PCBX_BPM.Location = new System.Drawing.Point(1312, 255);
             this.PCBX_BPM.Margin = new System.Windows.Forms.Padding(0);
             this.PCBX_BPM.Name = "PCBX_BPM";
-            this.PCBX_BPM.Size = new System.Drawing.Size(145, 50);
+            this.PCBX_BPM.Size = new System.Drawing.Size(193, 62);
             this.PCBX_BPM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PCBX_BPM.TabIndex = 3;
             this.PCBX_BPM.TabStop = false;
@@ -125,9 +129,10 @@
             this.BTN_Generate.FlatAppearance.BorderSize = 0;
             this.BTN_Generate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BTN_Generate.ForeColor = System.Drawing.Color.Transparent;
-            this.BTN_Generate.Location = new System.Drawing.Point(349, 669);
+            this.BTN_Generate.Location = new System.Drawing.Point(465, 823);
+            this.BTN_Generate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BTN_Generate.Name = "BTN_Generate";
-            this.BTN_Generate.Size = new System.Drawing.Size(485, 83);
+            this.BTN_Generate.Size = new System.Drawing.Size(647, 102);
             this.BTN_Generate.TabIndex = 2;
             this.BTN_Generate.UseVisualStyleBackColor = false;
             this.BTN_Generate.Click += new System.EventHandler(this.BTN_Generate_Click);
@@ -138,9 +143,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PCBX_Background.Image = global::Orpheus.Properties.Resources.Orpheus_MainBCKGRND1;
-            this.PCBX_Background.Location = new System.Drawing.Point(-4, -34);
+            this.PCBX_Background.Location = new System.Drawing.Point(-5, -42);
+            this.PCBX_Background.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PCBX_Background.Name = "PCBX_Background";
-            this.PCBX_Background.Size = new System.Drawing.Size(1222, 800);
+            this.PCBX_Background.Size = new System.Drawing.Size(1629, 985);
             this.PCBX_Background.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PCBX_Background.TabIndex = 0;
             this.PCBX_Background.TabStop = false;
@@ -160,7 +166,8 @@
             // 
             this.TXT_BPM.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TXT_BPM.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TXT_BPM.Location = new System.Drawing.Point(996, 276);
+            this.TXT_BPM.Location = new System.Drawing.Point(1328, 340);
+            this.TXT_BPM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TXT_BPM.Maximum = new decimal(new int[] {
             250,
             0,
@@ -172,7 +179,7 @@
             0,
             0});
             this.TXT_BPM.Name = "TXT_BPM";
-            this.TXT_BPM.Size = new System.Drawing.Size(120, 27);
+            this.TXT_BPM.Size = new System.Drawing.Size(160, 33);
             this.TXT_BPM.TabIndex = 9;
             this.TXT_BPM.Value = new decimal(new int[] {
             50,
@@ -189,9 +196,10 @@
             "2/4",
             "3/4",
             "4/4"});
-            this.CMBX_TimeSig.Location = new System.Drawing.Point(937, 535);
+            this.CMBX_TimeSig.Location = new System.Drawing.Point(1249, 658);
+            this.CMBX_TimeSig.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CMBX_TimeSig.Name = "CMBX_TimeSig";
-            this.CMBX_TimeSig.Size = new System.Drawing.Size(147, 33);
+            this.CMBX_TimeSig.Size = new System.Drawing.Size(195, 38);
             this.CMBX_TimeSig.TabIndex = 10;
             // 
             // LSBX_ExcludedNotes
@@ -211,18 +219,20 @@
             "F#",
             "G",
             "G#"});
-            this.LSBX_ExcludedNotes.Location = new System.Drawing.Point(67, 253);
+            this.LSBX_ExcludedNotes.Location = new System.Drawing.Point(89, 311);
+            this.LSBX_ExcludedNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LSBX_ExcludedNotes.MultiColumn = true;
             this.LSBX_ExcludedNotes.Name = "LSBX_ExcludedNotes";
-            this.LSBX_ExcludedNotes.Size = new System.Drawing.Size(233, 94);
+            this.LSBX_ExcludedNotes.Size = new System.Drawing.Size(309, 106);
             this.LSBX_ExcludedNotes.TabIndex = 11;
             // 
             // BTN_PatternSeedGen
             // 
             this.BTN_PatternSeedGen.ForeColor = System.Drawing.SystemColors.Control;
-            this.BTN_PatternSeedGen.Location = new System.Drawing.Point(148, 581);
+            this.BTN_PatternSeedGen.Location = new System.Drawing.Point(197, 715);
+            this.BTN_PatternSeedGen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BTN_PatternSeedGen.Name = "BTN_PatternSeedGen";
-            this.BTN_PatternSeedGen.Size = new System.Drawing.Size(93, 23);
+            this.BTN_PatternSeedGen.Size = new System.Drawing.Size(124, 28);
             this.BTN_PatternSeedGen.TabIndex = 12;
             this.BTN_PatternSeedGen.Text = "New Seed";
             this.BTN_PatternSeedGen.UseVisualStyleBackColor = true;
@@ -231,9 +241,10 @@
             // TXBX_PatternSeed
             // 
             this.TXBX_PatternSeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TXBX_PatternSeed.Location = new System.Drawing.Point(74, 535);
+            this.TXBX_PatternSeed.Location = new System.Drawing.Point(99, 658);
+            this.TXBX_PatternSeed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TXBX_PatternSeed.Name = "TXBX_PatternSeed";
-            this.TXBX_PatternSeed.Size = new System.Drawing.Size(226, 31);
+            this.TXBX_PatternSeed.Size = new System.Drawing.Size(300, 37);
             this.TXBX_PatternSeed.TabIndex = 13;
             this.TXBX_PatternSeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TXBX_PatternSeed.TextChanged += new System.EventHandler(this.TXBX_PatternSeed_TextChanged);
@@ -242,7 +253,8 @@
             // 
             this.TXT_Randomness.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TXT_Randomness.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TXT_Randomness.Location = new System.Drawing.Point(546, 541);
+            this.TXT_Randomness.Location = new System.Drawing.Point(728, 666);
+            this.TXT_Randomness.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TXT_Randomness.Maximum = new decimal(new int[] {
             10,
             0,
@@ -254,7 +266,7 @@
             0,
             0});
             this.TXT_Randomness.Name = "TXT_Randomness";
-            this.TXT_Randomness.Size = new System.Drawing.Size(120, 27);
+            this.TXT_Randomness.Size = new System.Drawing.Size(160, 33);
             this.TXT_Randomness.TabIndex = 14;
             this.TXT_Randomness.Value = new decimal(new int[] {
             5,
@@ -272,10 +284,10 @@
             this.BTN_Title.FlatAppearance.BorderSize = 5;
             this.BTN_Title.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BTN_Title.ForeColor = System.Drawing.Color.Transparent;
-            this.BTN_Title.Location = new System.Drawing.Point(9, 9);
+            this.BTN_Title.Location = new System.Drawing.Point(12, 11);
             this.BTN_Title.Margin = new System.Windows.Forms.Padding(0);
             this.BTN_Title.Name = "BTN_Title";
-            this.BTN_Title.Size = new System.Drawing.Size(370, 93);
+            this.BTN_Title.Size = new System.Drawing.Size(493, 114);
             this.BTN_Title.TabIndex = 1;
             this.BTN_Title.UseVisualStyleBackColor = false;
             this.BTN_Title.Click += new System.EventHandler(this.BTN_Title_Click);
@@ -287,9 +299,10 @@
             this.BTN_LoadMidiFiles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BTN_LoadMidiFiles.FlatAppearance.BorderSize = 0;
             this.BTN_LoadMidiFiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTN_LoadMidiFiles.Location = new System.Drawing.Point(908, 9);
+            this.BTN_LoadMidiFiles.Location = new System.Drawing.Point(1211, 11);
+            this.BTN_LoadMidiFiles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BTN_LoadMidiFiles.Name = "BTN_LoadMidiFiles";
-            this.BTN_LoadMidiFiles.Size = new System.Drawing.Size(240, 93);
+            this.BTN_LoadMidiFiles.Size = new System.Drawing.Size(320, 114);
             this.BTN_LoadMidiFiles.TabIndex = 16;
             this.BTN_LoadMidiFiles.UseVisualStyleBackColor = false;
             this.BTN_LoadMidiFiles.Click += new System.EventHandler(this.BTN_LoadMidiFiles_Click);
@@ -299,9 +312,10 @@
             this.PCBX_KeySigniture.BackColor = System.Drawing.Color.Transparent;
             this.PCBX_KeySigniture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PCBX_KeySigniture.Image = global::Orpheus.Properties.Resources.KeySignitureBTN;
-            this.PCBX_KeySigniture.Location = new System.Drawing.Point(451, 197);
+            this.PCBX_KeySigniture.Location = new System.Drawing.Point(601, 242);
+            this.PCBX_KeySigniture.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PCBX_KeySigniture.Name = "PCBX_KeySigniture";
-            this.PCBX_KeySigniture.Size = new System.Drawing.Size(352, 79);
+            this.PCBX_KeySigniture.Size = new System.Drawing.Size(469, 97);
             this.PCBX_KeySigniture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PCBX_KeySigniture.TabIndex = 17;
             this.PCBX_KeySigniture.TabStop = false;
@@ -311,7 +325,7 @@
             this.CMBX_KeySigniture.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CMBX_KeySigniture.FormattingEnabled = true;
             this.CMBX_KeySigniture.Items.AddRange(new object[] {
-            "C ",
+            "C",
             "C#",
             "D",
             "D#",
@@ -323,9 +337,10 @@
             "A",
             "A#",
             "B"});
-            this.CMBX_KeySigniture.Location = new System.Drawing.Point(504, 282);
+            this.CMBX_KeySigniture.Location = new System.Drawing.Point(672, 347);
+            this.CMBX_KeySigniture.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CMBX_KeySigniture.Name = "CMBX_KeySigniture";
-            this.CMBX_KeySigniture.Size = new System.Drawing.Size(147, 33);
+            this.CMBX_KeySigniture.Size = new System.Drawing.Size(195, 38);
             this.CMBX_KeySigniture.TabIndex = 18;
             // 
             // CMBX_MajMin
@@ -335,18 +350,19 @@
             this.CMBX_MajMin.Items.AddRange(new object[] {
             "maj",
             "min"});
-            this.CMBX_MajMin.Location = new System.Drawing.Point(684, 282);
+            this.CMBX_MajMin.Location = new System.Drawing.Point(912, 347);
+            this.CMBX_MajMin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CMBX_MajMin.Name = "CMBX_MajMin";
-            this.CMBX_MajMin.Size = new System.Drawing.Size(72, 33);
+            this.CMBX_MajMin.Size = new System.Drawing.Size(95, 38);
             this.CMBX_MajMin.TabIndex = 19;
             // 
             // FRM_MainPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Orpheus.Properties.Resources.Orpheus_MainBCKGRND1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1205, 760);
+            this.ClientSize = new System.Drawing.Size(1604, 926);
             this.Controls.Add(this.CMBX_MajMin);
             this.Controls.Add(this.CMBX_KeySigniture);
             this.Controls.Add(this.PCBX_KeySigniture);
@@ -366,8 +382,9 @@
             this.Controls.Add(this.BTN_Generate);
             this.Controls.Add(this.PCBX_Background);
             this.DoubleBuffered = true;
-            this.MaximumSize = new System.Drawing.Size(1221, 799);
-            this.MinimumSize = new System.Drawing.Size(1221, 799);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximumSize = new System.Drawing.Size(1622, 973);
+            this.MinimumSize = new System.Drawing.Size(1622, 973);
             this.Name = "FRM_MainPage";
             this.Text = "Orpheus";
             ((System.ComponentModel.ISupportInitialize)(this.PCBX_PatternSeed)).EndInit();

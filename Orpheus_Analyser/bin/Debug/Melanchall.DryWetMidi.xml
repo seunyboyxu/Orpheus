@@ -7245,18 +7245,18 @@
             about the source or destination.</param>
             <exception cref="T:System.ArgumentNullException"><paramref name="info"/> is <c>null</c>.</exception>
         </member>
-        <member name="T:Melanchall.DryWetMidi.Core.Lazy.EnumerateEventsResult">
+        <member name="T:Melanchall.DryWetMidi.Core.EnumerateEventsResult">
             <summary>
             Represents a result of the <see cref="M:Melanchall.DryWetMidi.Core.MidiTokensReaderUtilities.EnumerateEvents(Melanchall.DryWetMidi.Core.MidiTokensReader)"/>
             method.
             </summary>
         </member>
-        <member name="P:Melanchall.DryWetMidi.Core.Lazy.EnumerateEventsResult.Events">
+        <member name="P:Melanchall.DryWetMidi.Core.EnumerateEventsResult.Events">
             <summary>
             Gets a lazy collection of MIDI events.
             </summary>
         </member>
-        <member name="P:Melanchall.DryWetMidi.Core.Lazy.EnumerateEventsResult.NextToken">
+        <member name="P:Melanchall.DryWetMidi.Core.EnumerateEventsResult.NextToken">
             <summary>
             Gets a MIDI token following the last MIDI event iterated by the
             <see cref="M:Melanchall.DryWetMidi.Core.MidiTokensReaderUtilities.EnumerateEvents(Melanchall.DryWetMidi.Core.MidiTokensReader)"/> method.
@@ -7283,7 +7283,8 @@
         <member name="T:Melanchall.DryWetMidi.Core.MidiTokensReader">
             <summary>
             Provides a way to read a MIDI file sequentially token by token keeping
-            low memory consumption.
+            low memory consumption. See
+            <see href="https://melanchall.github.io/drywetmidi/articles/file-reading-writing/Lazy-reading-writing.html">Lazy reading/writing</see> article to learn more.
             </summary>
             <seealso cref="T:Melanchall.DryWetMidi.Core.MidiTokensWriter"/>
         </member>
@@ -7334,7 +7335,8 @@
         </member>
         <member name="T:Melanchall.DryWetMidi.Core.MidiTokensReaderUtilities">
             <summary>
-            Provides useful utility methods for <see cref="T:Melanchall.DryWetMidi.Core.MidiTokensReader"/>.
+            Provides useful utility methods for <see cref="T:Melanchall.DryWetMidi.Core.MidiTokensReader"/>. See
+            <see href="https://melanchall.github.io/drywetmidi/articles/file-reading-writing/Lazy-reading-writing.html">Lazy reading/writing</see> article to learn more.
             </summary>
         </member>
         <member name="M:Melanchall.DryWetMidi.Core.MidiTokensReaderUtilities.EnumerateTokens(Melanchall.DryWetMidi.Core.MidiTokensReader)">
@@ -7363,14 +7365,15 @@
             </para>
             </remarks>
             <param name="reader"><see cref="T:Melanchall.DryWetMidi.Core.MidiTokensReader"/> to read MIDI events with.</param>
-            <returns>An instance of the <see cref="T:Melanchall.DryWetMidi.Core.Lazy.EnumerateEventsResult"/> containing a lazy collection of consecutive
+            <returns>An instance of the <see cref="T:Melanchall.DryWetMidi.Core.EnumerateEventsResult"/> containing a lazy collection of consecutive
             MIDI events read with the <paramref name="reader"/>.</returns>
             <exception cref="T:System.ArgumentNullException"><paramref name="reader"/> is <c>null</c>.</exception>
         </member>
         <member name="T:Melanchall.DryWetMidi.Core.MidiTokensWriter">
             <summary>
             Provides a way to write data to a MIDI file sequentially token by token keeping
-            low memory consumption.
+            low memory consumption. See
+            <see href="https://melanchall.github.io/drywetmidi/articles/file-reading-writing/Lazy-reading-writing.html">Lazy reading/writing</see> article to learn more.
             </summary>
             <seealso cref="T:Melanchall.DryWetMidi.Core.MidiTokensReader"/>
         </member>
@@ -7714,7 +7717,8 @@
         <member name="M:Melanchall.DryWetMidi.Core.MidiFile.ReadLazy(System.String,Melanchall.DryWetMidi.Core.ReadingSettings)">
             <summary>
             Creates an instance of the <see cref="T:Melanchall.DryWetMidi.Core.MidiTokensReader"/> allowing to read a MIDI file sequentially
-            token by token keeping low memory consumption.
+            token by token keeping low memory consumption. See
+            <see href="https://melanchall.github.io/drywetmidi/articles/file-reading-writing/Lazy-reading-writing.html">Lazy reading/writing</see> article to learn more.
             </summary>
             <param name="filePath">Path to the file to read.</param>
             <param name="settings">Settings according to which the file must be read. Specify <c>null</c> to use
@@ -7789,7 +7793,8 @@
         <member name="M:Melanchall.DryWetMidi.Core.MidiFile.WriteLazy(System.String,System.Boolean,Melanchall.DryWetMidi.Core.MidiFileFormat,Melanchall.DryWetMidi.Core.WritingSettings,Melanchall.DryWetMidi.Core.TimeDivision)">
             <summary>
             Creates an instance of the <see cref="T:Melanchall.DryWetMidi.Core.MidiTokensWriter"/> allowing to write data to a
-            MIDI file sequentially token by token keeping low memory consumption.
+            MIDI file sequentially token by token keeping low memory consumption. See
+            <see href="https://melanchall.github.io/drywetmidi/articles/file-reading-writing/Lazy-reading-writing.html">Lazy reading/writing</see> article to learn more.
             </summary>
             <param name="filePath">Full path of the file to write to.</param>
             <param name="overwriteFile">If <c>true</c> and file specified by <paramref name="filePath"/> already
@@ -7905,7 +7910,8 @@
         <member name="M:Melanchall.DryWetMidi.Core.MidiFile.ReadLazy(System.IO.Stream,Melanchall.DryWetMidi.Core.ReadingSettings)">
             <summary>
             Creates an instance of the <see cref="T:Melanchall.DryWetMidi.Core.MidiTokensReader"/> allowing to read a MIDI file
-            from the specified stream sequentially token by token keeping low memory consumption.
+            from the specified stream sequentially token by token keeping low memory consumption. See
+            <see href="https://melanchall.github.io/drywetmidi/articles/file-reading-writing/Lazy-reading-writing.html">Lazy reading/writing</see> article to learn more.
             </summary>
             <param name="stream">Stream to read file from.</param>
             <param name="settings">Settings according to which the file must be read. Specify <c>null</c> to use
@@ -7961,7 +7967,8 @@
         <member name="M:Melanchall.DryWetMidi.Core.MidiFile.WriteLazy(System.IO.Stream,Melanchall.DryWetMidi.Core.WritingSettings,Melanchall.DryWetMidi.Core.MidiFileFormat,Melanchall.DryWetMidi.Core.TimeDivision)">
             <summary>
             Creates an instance of the <see cref="T:Melanchall.DryWetMidi.Core.MidiTokensWriter"/> allowing to write data to the
-            specified stream sequentially token by token keeping low memory consumption.
+            specified stream sequentially token by token keeping low memory consumption. See
+            <see href="https://melanchall.github.io/drywetmidi/articles/file-reading-writing/Lazy-reading-writing.html">Lazy reading/writing</see> article to learn more.
             </summary>
             <param name="stream">Stream to write file's data to.</param>
             <param name="format">Format of the file to be written.</param>
@@ -14144,7 +14151,8 @@
         <member name="T:Melanchall.DryWetMidi.Interaction.TimedObjectsWriter">
             <summary>
             Provides a wrapper around <see cref="T:Melanchall.DryWetMidi.Core.MidiTokensWriter"/> to write objects to it keeping
-            low memory consumption.
+            low memory consumption. See
+            <see href="https://melanchall.github.io/drywetmidi/articles/file-reading-writing/Lazy-reading-writing.html">Lazy reading/writing</see> article to learn more.
             </summary>
         </member>
         <member name="M:Melanchall.DryWetMidi.Interaction.TimedObjectsWriter.#ctor(Melanchall.DryWetMidi.Core.MidiTokensWriter)">
@@ -18059,7 +18067,45 @@
         <member name="P:Melanchall.DryWetMidi.Multimedia.InputDevice.RaiseMidiTimeCodeReceived">
             <summary>
             Gets or sets a value indicating if <see cref="E:Melanchall.DryWetMidi.Multimedia.InputDevice.MidiTimeCodeReceived"/> event should be raised or not.
+            Default value is <c>true</c>.
             </summary>
+        </member>
+        <member name="P:Melanchall.DryWetMidi.Multimedia.InputDevice.WaitForCompleteSysExEvent">
+            <summary>
+            Gets or sets a value indicating whether system exclusive event is treated as received only
+            when it's completed or not. Default value is <c>true</c>.
+            </summary>
+            <remarks>
+            <para>
+            Some MIDI devices and MIDI subsystems of operating systems can split a system exclusive
+            event into several parts on sending the event. If <see cref="P:Melanchall.DryWetMidi.Multimedia.InputDevice.WaitForCompleteSysExEvent"/> is
+            set to <c>true</c> (default value), DryWetMIDI will wait until last part received, then the library
+            will combine all event's parts into single MIDI event and fire the <see cref="E:Melanchall.DryWetMidi.Multimedia.InputDevice.EventReceived"/> event.
+            </para>
+            <para>
+            For example, considereng following separate events are received (here bytes in hex format):
+            </para>
+            <para>
+            <c>F0 7F 60</c>
+            </para>
+            <para>
+            <c>40 F7</c>
+            </para>
+            <para>
+            With <see cref="P:Melanchall.DryWetMidi.Multimedia.InputDevice.WaitForCompleteSysExEvent"/> set to <c>true</c>, the <see cref="E:Melanchall.DryWetMidi.Multimedia.InputDevice.EventReceived"/>
+            will be fired only once providing the single event:
+            </para>
+            <para>
+            <c>F0 7F 60 40 F7</c>
+            </para>
+            <para>
+            (<c>F7</c> is a marker of a completed system exclusive event).
+            </para>
+            <para>
+            With the property set to <c>false</c> you'll be notified with <see cref="E:Melanchall.DryWetMidi.Multimedia.InputDevice.EventReceived"/> event
+            two times, so every part will be considered as a MIDI event.
+            </para>
+            </remarks>
         </member>
         <member name="P:Melanchall.DryWetMidi.Multimedia.InputDevice.IsListeningForEvents">
             <summary>

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Melanchall.DryWetMidi.Core;
+using Melanchall.DryWetMidi.Interaction;
 using Orpheus_MidiFileMaker;
 
 
@@ -65,13 +66,14 @@ namespace Orpheus
                 SaveFileDialog SFDBX = new SaveFileDialog();
                 SFDBX.Filter = "Midi Files (*.midi) | *.midi";
                 SFDBX.Title = "Save As";
+                    
                 if (SFDBX.ShowDialog() == DialogResult.OK)
                 {
                     string location = SFDBX.FileName;
 
                     try
                     {
-                        file.Write(location);
+                        file.Write(location, true, MidiFileFormat.MultiTrack);
                     }
                     catch (Exception ex)
                     {
