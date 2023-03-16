@@ -64,7 +64,7 @@ namespace Orpheus
 
                 //save file dialog box
                 SaveFileDialog SFDBX = new SaveFileDialog();
-                SFDBX.Filter = "Midi Files (*.midi) | *.midi";
+                SFDBX.Filter = "Midi Files (*.mid) | *.mid";
                 SFDBX.Title = "Save As";
                     
                 if (SFDBX.ShowDialog() == DialogResult.OK)

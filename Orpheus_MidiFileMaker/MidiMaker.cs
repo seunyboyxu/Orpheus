@@ -334,11 +334,21 @@ namespace Orpheus_MidiFileMaker
 
             var ChordPatternFinal = ChordPatternBuilder.Build().ToTrackChunk(tempoMap);
 
-            MidiFile midifile = new MidiFile(notePatternFinal, ChordPatternFinal);
+            MidiFile midifile = new MidiFile();
+
+
+            midifile.Chunks.Add(notePatternFinal);
+            midifile.Chunks.Add(ChordPatternFinal);
+
+            midifile.ReplaceTempoMap(tempoMap);
+
+           
+
+            
             
 
 
-            var test = midifile.OriginalFormat.ToString();
+            //var test = midifile.OriginalFormat.ToString();
 
             MidiFile tmp = new MidiFile();
             
