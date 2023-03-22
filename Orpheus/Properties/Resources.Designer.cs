@@ -123,16 +123,6 @@ namespace Orpheus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Orpheus_Background {
-            get {
-                object obj = ResourceManager.GetObject("Orpheus_Background", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Orpheus_MainBCKGRND {
             get {
                 object obj = ResourceManager.GetObject("Orpheus_MainBCKGRND", resourceCulture);
