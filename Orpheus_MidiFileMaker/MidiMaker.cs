@@ -124,7 +124,7 @@ namespace Orpheus_MidiFileMaker
 
         List<double> DoubleValues = new List<double>()
         {
-            1.0, 0.75, 0.5, 0.25, 0.4375, 0.375, 0.3125, 0.21875, 0.109375, 0.1875, 0.125, 0.0625, 0.03125, 0.015625
+            1.0, 0.75, 0.5, 0.25, 0.4375, 0.65625, 0.625, 0.375, 0.3125, 0.21875, 0.15625, 0.109375, 0.1875, 0.125, 0.0625, 0.03125, 0.015625
         };
 
 
@@ -149,6 +149,10 @@ namespace Orpheus_MidiFileMaker
             NoteDurationConversion.Add(0.21875, new MusicalTimeSpan(7, 32));
             NoteDurationConversion.Add(0.4375, new MusicalTimeSpan(7, 16));
             NoteDurationConversion.Add(0.109375, new MusicalTimeSpan(7, 64));
+            NoteDurationConversion.Add(0.15625, new MusicalTimeSpan(5, 32));
+            NoteDurationConversion.Add(0.65625, new MusicalTimeSpan(21, 32));
+            NoteDurationConversion.Add(0.09375, new MusicalTimeSpan(3, 32));
+            NoteDurationConversion.Add(0.625, new MusicalTimeSpan(5, 8));
         } 
 
         public static void Main(string[] args)
@@ -215,7 +219,7 @@ namespace Orpheus_MidiFileMaker
             var FinalChordSequence = processes.SequenceBuilder(midiMaker.commonChordSequences[x], UserData.GetTimeSig(), UserData.GetMajMin(), UserData.GetKeySig());
 
             //Note generator function
-            NoteProcesses noteProcesses= new NoteProcesses();
+            NoteProcesses noteProcesses = new NoteProcesses();
             var FinalPatterns = noteProcesses.PatternFlattener(CollectedFiles);
 
             var PatternGen = noteProcesses.PatternGen(timesig, FinalPatterns, PatternChooser);
