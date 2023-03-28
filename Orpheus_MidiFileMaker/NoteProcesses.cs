@@ -12,7 +12,7 @@ namespace Orpheus_MidiFileMaker
     {
         List<double> SetDoubles = new List<double>()
         {
-            1.0, 0.75, 0.5, 0.25, 0.375, 0.625, 0.3125, 0.4375, 0.109375, 0.15625, 0.21875, 0.1875, 0.125, 0.0625, 0.03125, 0.015625
+            1.0, 0.75, 0.5, 0.25, 0.375, 0.625, 0.3125, 0.4375, 0.109375, 0.15625, 0.21875, 0.1875, 0.125, 0.0625, 0.03125, 0.015625, 0.046875
         };
         public NoteProcesses() { }
 
@@ -151,7 +151,7 @@ namespace Orpheus_MidiFileMaker
             for(int i = 0; i < total; i++)
             {
                 //choses jump range based on randomness
-                int jump = random.Next(0, Randomness + 1);
+                int jump = random.Next(0, Randomness + 2);
                 //makes sure the jump goes in the right direction
                 jump = jump * direction;
                 //adds the jump on to the index

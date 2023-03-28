@@ -124,7 +124,7 @@ namespace Orpheus_MidiFileMaker
 
         List<double> DoubleValues = new List<double>()
         {
-            1.0, 0.75, 0.5, 0.25, 0.4375, 0.65625, 0.625, 0.375, 0.3125, 0.21875, 0.15625, 0.109375, 0.1875, 0.125, 0.0625, 0.03125, 0.015625
+            1.0, 0.75, 0.5, 0.25, 0.4375, 0.65625, 0.625, 0.375, 0.3125, 0.21875, 0.15625, 0.109375, 0.1875, 0.125, 0.0625, 0.03125, 0.015625, 0.046875
         };
 
 
@@ -153,6 +153,7 @@ namespace Orpheus_MidiFileMaker
             NoteDurationConversion.Add(0.65625, new MusicalTimeSpan(21, 32));
             NoteDurationConversion.Add(0.09375, new MusicalTimeSpan(3, 32));
             NoteDurationConversion.Add(0.625, new MusicalTimeSpan(5, 8));
+            NoteDurationConversion.Add(0.046875, new MusicalTimeSpan(3, 64));
         } 
 
         public static void Main(string[] args)
@@ -198,8 +199,8 @@ namespace Orpheus_MidiFileMaker
                 allTop10Notes.Add(s.Substring(0, index + 1));
             }
             //remove duplicates
-            HashSet<string> uniqueNames = new HashSet<string>(allTop10Notes);
-            allTop10Notes = uniqueNames.ToList();
+            //HashSet<string> uniqueNames = new HashSet<string>(allTop10Notes);
+            //allTop10Notes = uniqueNames.ToList();
 
 
             //Get rid of excluded notes
@@ -207,8 +208,10 @@ namespace Orpheus_MidiFileMaker
             //filter notes to get the ones in the relevant key signiture, need a function for this
             MidiMaker midimaker = new MidiMaker();
             allTop10Notes = midimaker.FilterKeySig(allTop10Notes, UserData.GetKeySig(), UserData.GetMajMin());
+
             //Now to sort the list so its in order from A to G
-            allTop10Notes.Sort();
+            //allTop10Notes.Sort();
+
             //now to deal with all the chords
             //chord generator function
             MyChordProcesses processes = new MyChordProcesses();
