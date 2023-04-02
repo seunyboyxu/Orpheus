@@ -22,11 +22,6 @@ using System.Collections;
 using System.Numerics;
 
 
-//machine learning LSTM
-using MathNet.Numerics.LinearAlgebra;
-using System.Runtime.CompilerServices;
-using System.ComponentModel;
-
 //JSON stuff
 using System.Text.Json;
 using System.Threading;
@@ -67,6 +62,8 @@ namespace Orpheus_Analyser
 
         public static void LoadMidiFiles()
         {
+            
+            Analysis errorchecker = new Analysis();
             var options = new JsonSerializerOptions  
             { 
                 AllowTrailingCommas = true,
@@ -82,7 +79,7 @@ namespace Orpheus_Analyser
                 if (count == offloader)
                 {
                     string json = JsonSerializer.Serialize(AllMidiFiles, options);
-                    System.IO.File.WriteAllText("/Users/seun_/source/repos/Orpheus/Orpheus/bin/Debug/MidiData/MidiData_" + filenumber + ".json", json);
+                    //System.IO.File.WriteAllText("/Users/seun_/source/repos/Orpheus/Orpheus/bin/Debug/MidiData/MidiData_" + filenumber + ".json", json);
                     AllMidiFiles.Clear();
                     count = 0;
                     filenumber++;
@@ -108,13 +105,30 @@ namespace Orpheus_Analyser
                     }
                     catch (Exception ex)
                     {
+
                         Analysis.errors.Add(ex.ToString(
                             ));
+                        
                     }
                 }
 
                 count++;
                 ProgressTracker ++;
+
+
+
+                // open a text file for writing
+                using (StreamWriter f = new StreamWriter("errors.txt"))
+                {
+                    HashSet<string> uniqueNames = new HashSet<string>(Analysis.errors);
+                    Analysis.errors = uniqueNames.ToList();
+
+                    // loop through the list and write each string as a new line
+                    foreach (string s in Analysis.errors)
+                    {
+                        f.WriteLine(s);
+                    }
+                }
                 
             }
         }
@@ -173,6 +187,7 @@ namespace Orpheus_Analyser
     public class Analysis
     {
         public static List<string> errors = new List<string>();
+
         public Analysis() { }
         public static double GetBPM(MidiFile midifile)
         {
@@ -583,7 +598,7 @@ namespace Orpheus_Analyser
                 }
                 catch (Exception e)
                 {
-                    Analysis.errors.Add(e.ToString());
+                    errors.Add(e.ToString());
                 }
             }
             return chunkDurations;

@@ -122,7 +122,7 @@ namespace Orpheus_MidiFileMaker
         //dictionary of NoteDuration to MusicalNote Duration
         public Dictionary<double, MusicalTimeSpan> NoteDurationConversion = new Dictionary<double, MusicalTimeSpan>();
 
-        List<double> DoubleValues = new List<double>()
+        public List<double> DoubleValues = new List<double>()
         {
             1.0, 0.75, 0.5, 0.25, 0.4375, 0.65625, 0.625, 0.375, 0.3125, 0.21875, 0.15625, 0.109375, 0.1875, 0.125, 0.0625, 0.03125, 0.015625, 0.046875
         };

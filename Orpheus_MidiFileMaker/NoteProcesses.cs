@@ -12,7 +12,7 @@ namespace Orpheus_MidiFileMaker
     {
         List<double> SetDoubles = new List<double>()
         {
-            1.0, 0.75, 0.5, 0.25, 0.375, 0.625, 0.3125, 0.4375, 0.109375, 0.15625, 0.21875, 0.1875, 0.125, 0.0625, 0.03125, 0.015625, 0.046875
+            1.0, 0.75, 0.5, 0.25, 0.4375, 0.65625, 0.625, 0.375, 0.3125, 0.21875, 0.15625, 0.109375, 0.1875, 0.125, 0.0625, 0.03125, 0.015625, 0.046875
         };
         public NoteProcesses() { }
 
@@ -104,30 +104,48 @@ namespace Orpheus_MidiFileMaker
         }
 
         //this function gets the double nearest to the refrenceValues
-        public double GetNearestValue(double value, List<double> referenceValues)
+        public static double GetNearestValue(double input, List<double> array)
         {
-            // Initialize the nearest value to the first reference value
-            double nearestValue = referenceValues[0];
-            // Initialize the minimum difference to the absolute difference between the value and the first reference value
-            double minDifference = Math.Abs(value - referenceValues[0]);
+            //binary search method
+            array.Sort();
 
-            // Loop through the remaining reference values
-            for (int i = 1; i < referenceValues.Count; i++)
+            int low = 0;
+            int high = array.Count - 1;
+            int mid = 0;
+            while (low <= high)
             {
-                // Calculate the difference between the value and the current reference value
-                double difference = Math.Abs(value - referenceValues[i]);
-                // If the current difference is smaller than the minimum difference
-                if (difference < minDifference)
+                mid = (low + high) / 2;
+                if (input == array[mid])
                 {
-                    // Update the minimum difference
-                    minDifference = difference;
-                    // Update the nearest value
-                    nearestValue = referenceValues[i];
+                    return array[mid];
+
+                }
+                else if (input < array[mid])
+                {
+                    high = mid - 1;
+                }
+                else
+                {
+                    low = mid + 1;
                 }
             }
+            // At this point, low is greater than high, so we compare the input value with // the elements at low and high indices to find the nearest value
+            if (low >= array.Count)
+            // low is out of range, so we return array[high]
+            {
+                return array[high];
+            }
+            else if (high < 0) // high is out of range, so we return array[low]
+            {
+                return array[low];
+            }
+            else // we return the element that has a smaller difference with the input value
+            {
+                double diffLow = Math.Abs(input - array[low]);
+                double diffHigh = Math.Abs(input - array[high]);
+                return diffLow < diffHigh ? array[low] : array[high];
+            }
 
-            // Return the nearest value
-            return nearestValue;
         }
 
         //generates the final note and pattern combinations
