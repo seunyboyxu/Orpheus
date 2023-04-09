@@ -28,7 +28,8 @@ namespace Orpheus_MidiFileMaker
 
             for(int i = 0; i < patterns.Count; i++)
             {
-                patterns[i] = GetNearestValue(patterns[i], SetDoubles);
+                var x = GetNearestValue(patterns[i], SetDoubles);
+                patterns[i] = x;
             }
             //removing all values of one
             patterns = patterns.Where(x => x != 1.0).ToList();
